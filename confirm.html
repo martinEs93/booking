@@ -1,1 +1,68 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Buchung bestätigen · Core Cruises</title><link rel="stylesheet" href="booking.css"></head><body><main class="card"><p class="eyebrow">CORE CRUISES</p><h1>Angaben prüfen und Buchung beauftragen</h1><div id="details" class="muted">Der Vorgang wird geladen …</div><p>Mit der Bestätigung beauftragst du Core Cruises, die Buchung bei der Reederei anzulegen. Preise und Verfügbarkeiten können sich bis dahin ändern.</p><button id="confirm" class="primary" disabled>Angaben bestätigen und Buchung beauftragen</button><p id="message" class="message" role="alert"></p></main><script>const API='https://api.corecruises.info/v1',token=new URLSearchParams(location.search).get('token'),details=document.querySelector('#details'),button=document.querySelector('#confirm'),message=document.querySelector('#message');if(!token){details.textContent='Der Bestätigungslink fehlt.'}else{fetch(API+'/booking-confirm?token='+encodeURIComponent(token)).then(r=>r.ok?r.json():r.json().then(x=>Promise.reject(x))).then(x=>{details.innerHTML='<strong>Vorgang '+x.reference+'</strong><br>'+[x.cruise_line,x.ship,x.route].filter(Boolean).join(' · ');button.disabled=false}).catch(e=>details.textContent=e.error||'Dieser Link ist ungültig oder abgelaufen.')}button.addEventListener('click',()=>{button.disabled=true;message.textContent='Bestätigung wird übermittelt …';fetch(API+'/booking-confirm?token='+encodeURIComponent(token),{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'}).then(r=>r.ok?r.json():r.json().then(x=>Promise.reject(x))).then(x=>{message.textContent='Vielen Dank. Deine Bestätigung ist eingegangen. Die nächsten Schritte erhältst du per E-Mail.'}).catch(e=>{message.textContent=e.error||'Die Bestätigung konnte nicht übermittelt werden.';button.disabled=false})});</script></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Buchung prüfen · Core Cruises</title>
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow">CORE CRUISES</p>
+    <h1>Angaben prüfen und Buchung beauftragen</h1>
+    <div id="details" class="muted">Der Vorgang wird geladen …</div>
+    <p>Bitte prüfe die Reisezusammenfassung und die Dokumente aus der E-Mail sorgfältig. Mit der Bestätigung beauftragst du Core Cruises, die Buchung bei der Reederei anzulegen. Preise und Verfügbarkeiten können sich bis dahin ändern.</p>
+    <div id="actions" hidden>
+      <button id="confirm" class="primary" type="button">Angaben bestätigen und Buchung beauftragen</button>
+      <button id="feedbackOpen" class="secondary" type="button">Angaben sind nicht korrekt</button>
+    </div>
+    <section id="feedbackPanel" hidden>
+      <h2>Welche Angabe ist nicht korrekt?</h2>
+      <p class="hint">Beschreibe bitte kurz, was geändert werden soll. Core Cruises prüft die Rückmeldung und sendet dir anschließend eine korrigierte Reisezusammenfassung.</p>
+      <label for="feedbackMessage">Deine Rückmeldung</label>
+      <textarea id="feedbackMessage" rows="6" maxlength="4000" placeholder="Zum Beispiel: Die Kabinenkategorie muss von Innenkabine auf Balkonkabine geändert werden."></textarea>
+      <button id="feedbackSend" class="primary" type="button">Korrektur melden</button>
+      <button id="feedbackCancel" class="secondary" type="button">Zurück</button>
+    </section>
+    <p id="message" class="message" role="alert"></p>
+  </main>
+  <script>
+    const API='https://api.corecruises.info/v1';
+    const query=new URLSearchParams(location.search);
+    const token=query.get('token');
+    const details=document.querySelector('#details');
+    const actions=document.querySelector('#actions');
+    const confirmButton=document.querySelector('#confirm');
+    const feedbackOpen=document.querySelector('#feedbackOpen');
+    const feedbackPanel=document.querySelector('#feedbackPanel');
+    const feedbackMessage=document.querySelector('#feedbackMessage');
+    const feedbackSend=document.querySelector('#feedbackSend');
+    const feedbackCancel=document.querySelector('#feedbackCancel');
+    const message=document.querySelector('#message');
+    const fail=(error)=>{message.textContent=error?.error||'Die Anfrage konnte nicht verarbeitet werden.';};
+    if(!token){details.textContent='Der Bestätigungslink fehlt.'}
+    else fetch(API+'/booking-confirm?token='+encodeURIComponent(token))
+      .then(response=>response.ok?response.json():response.json().then(error=>Promise.reject(error)))
+      .then(data=>{details.innerHTML='<strong>Vorgang '+data.reference+'</strong><br>'+[data.cruise_line,data.ship,data.route].filter(Boolean).join(' · ');actions.hidden=false;if(query.get('action')==='feedback')feedbackOpen.click()})
+      .catch(error=>{details.textContent=error.error||'Dieser Link ist ungültig oder abgelaufen.'});
+    confirmButton.addEventListener('click',()=>{
+      confirmButton.disabled=true;feedbackOpen.disabled=true;message.textContent='Bestätigung wird übermittelt …';
+      fetch(API+'/booking-confirm?token='+encodeURIComponent(token),{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'})
+        .then(response=>response.ok?response.json():response.json().then(error=>Promise.reject(error)))
+        .then(()=>{actions.hidden=true;message.textContent='Vielen Dank. Deine Bestätigung ist eingegangen. Die nächsten Schritte erhältst du per E-Mail.'})
+        .catch(error=>{fail(error);confirmButton.disabled=false;feedbackOpen.disabled=false});
+    });
+    feedbackOpen.addEventListener('click',()=>{feedbackPanel.hidden=false;feedbackOpen.hidden=true;confirmButton.hidden=true;feedbackMessage.focus()});
+    feedbackCancel.addEventListener('click',()=>{feedbackPanel.hidden=true;feedbackOpen.hidden=false;confirmButton.hidden=false;message.textContent=''});
+    feedbackSend.addEventListener('click',()=>{
+      const text=feedbackMessage.value.trim();
+      if(text.length<5){message.textContent='Bitte beschreibe kurz, welche Angabe nicht korrekt ist.';return}
+      feedbackSend.disabled=true;message.textContent='Rückmeldung wird übermittelt …';
+      fetch(API+'/booking-feedback?token='+encodeURIComponent(token),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text})})
+        .then(response=>response.ok?response.json():response.json().then(error=>Promise.reject(error)))
+        .then(()=>{actions.hidden=true;feedbackPanel.hidden=true;message.textContent='Danke für deine Rückmeldung. Wir prüfen die Angaben und senden dir eine korrigierte Reisezusammenfassung.'})
+        .catch(error=>{fail(error);feedbackSend.disabled=false});
+    });
+  </script>
+</body>
+</html>
