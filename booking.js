@@ -25,7 +25,30 @@ function row(v = {}) {
   el.querySelector('button').onclick = () => el.remove();
   return el;
 }
-form.addEventListener('input', e => { if(e.target.matches('[data-birth]')) e.target.setCustomValidity(''); });
+// Keep the numeric mobile keyboard; the field supplies the date separators.
+form.addEventListener('beforeinput', e => {
+  const input = e.target;
+  if (!input.matches('[data-birth]') || input.selectionStart !== input.selectionEnd) return;
+  const pos = input.selectionStart;
+  // Delete the adjacent digit as well when backspace/delete reaches a separator.
+  if (e.inputType === 'deleteContentBackward' && input.value[pos - 1] === '.') input.setSelectionRange(Math.max(0, pos - 2), pos);
+  if (e.inputType === 'deleteContentForward' && input.value[pos] === '.') input.setSelectionRange(pos, pos + 2);
+});
+form.addEventListener('input', e => {
+  const input = e.target;
+  if (!input.matches('[data-birth]')) return;
+  const digitsBeforeCursor = input.value.slice(0, input.selectionStart).replace(/\D/g, '').length;
+  const digits = input.value.replace(/\D/g, '').slice(0, 8);
+  input.value = [digits.slice(0, 2), digits.slice(2, 4), digits.slice(4)].filter(Boolean).join('.');
+  let cursor = 0, seen = 0;
+  while (cursor < input.value.length && seen < digitsBeforeCursor) {
+    if (/\d/.test(input.value[cursor])) seen++;
+    cursor++;
+  }
+  if (input.value[cursor] === '.') cursor++;
+  input.setSelectionRange(cursor, cursor);
+  input.setCustomValidity('');
+});
 document.querySelector('#add').onclick = () => travelers.append(row());
 async function request(options) {
   const response = await fetch(API + '/booking-form?token=' + encodeURIComponent(token), options);
