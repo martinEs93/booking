@@ -2114,3 +2114,179 @@ body:has(.xtc-cabins-continue-button) .card * {
 #xt-offer-main .xt-offer-promo-description .xt-promo-description {
   background: rgba(237, 195, 97, .28) !important;
 }
+
+/* ============================================================
+   CORE CRUISES PATCH v1.6
+   - fixes clipped desktop datepicker/calendar
+   - modernises remaining final booking buttons
+   ============================================================ */
+
+
+/* ============================================================
+   52. DESKTOP DATEPICKER / CALENDAR FIX
+   ============================================================ */
+
+/*
+ * The sticky desktop search sidebar previously used overflow-y:auto.
+ * That clips the datepicker when it opens wider than the sidebar.
+ * Keep the sidebar sticky, but allow floating UI to escape.
+ */
+@media (min-width: 992px) {
+  #xt-page-search > aside {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* None of the search containers should clip the calendar */
+#xt-cruisefinder-collapse,
+#xt-cruisefinder-top,
+#xt-cruisefinder-extended,
+.xtc-search-cruisefinder {
+  overflow: visible !important;
+}
+
+/* Keep floating datepicker / dropdown UI above result cards */
+#xt-page-search .dropdown-menu,
+#xt-page-search .datepicker,
+#xt-page-search .ui-datepicker,
+#xt-page-search [class*="datepicker"],
+#xt-page-search [class*="easepick"],
+#xt-page-search [data-datepicker-target] {
+  z-index: 10050 !important;
+}
+
+
+/* ============================================================
+   53. FINAL BOOKING BUTTONS
+   ============================================================ */
+
+/*
+ * Some later CruiseCompass steps still fall back to old Bootstrap
+ * gradient buttons. In the booking flow we use a clean secondary
+ * button and Core-Cruises gold for the main action.
+ */
+
+/* Secondary actions, e.g. "Daten korrigieren" */
+body:has(#xt-breadcrumb):not(:has(#xt-page-search))
+.btn-secondary:not(.xtc-offer-update-button) {
+  min-height: 46px;
+  padding: .72rem 1.05rem !important;
+
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 11px !important;
+
+  background: #FFFFFF !important;
+  background-image: none !important;
+
+  color: var(--cc-navy) !important;
+
+  font-weight: 850 !important;
+  text-shadow: none !important;
+
+  box-shadow: none !important;
+}
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search))
+.btn-secondary:not(.xtc-offer-update-button):hover,
+body:has(#xt-breadcrumb):not(:has(#xt-page-search))
+.btn-secondary:not(.xtc-offer-update-button):focus {
+  border-color: var(--cc-petrol) !important;
+
+  background: rgba(63, 169, 174, .07) !important;
+  background-image: none !important;
+
+  color: var(--cc-navy) !important;
+
+  text-shadow: none !important;
+  box-shadow: 0 0 0 4px rgba(63, 169, 174, .11) !important;
+}
+
+
+/* Primary actions, e.g. "Anfrage senden" / "Weiter" */
+body:has(#xt-breadcrumb):not(:has(#xt-page-search))
+.btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-button):not(.xtc-search-cruisefinder-extended-button) {
+  min-height: 46px;
+  padding: .72rem 1.1rem !important;
+
+  border: 1px solid var(--cc-gold) !important;
+  border-radius: 11px !important;
+
+  background: var(--cc-gold) !important;
+  background-image: none !important;
+
+  color: var(--cc-navy) !important;
+
+  font-weight: 900 !important;
+  text-shadow: none !important;
+
+  box-shadow: 0 7px 18px rgba(10, 26, 47, .12) !important;
+}
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search))
+.btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-button):not(.xtc-search-cruisefinder-extended-button):hover,
+body:has(#xt-breadcrumb):not(:has(#xt-page-search))
+.btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-button):not(.xtc-search-cruisefinder-extended-button):focus {
+  border-color: var(--cc-gold-dark) !important;
+
+  background: var(--cc-gold-dark) !important;
+  background-image: none !important;
+
+  color: var(--cc-navy) !important;
+
+  text-shadow: none !important;
+
+  box-shadow: 0 9px 22px rgba(10, 26, 47, .15) !important;
+}
+
+
+/*
+ * Breadcrumb is navigation, not a booking CTA:
+ * preserve the dedicated breadcrumb styling from v1.4.
+ */
+#xt-breadcrumb .btn.btn-primary {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+#xt-breadcrumb .btn.btn-primary:not(:has(~ .btn.btn-primary)) {
+  border-color: var(--cc-gold) !important;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+}
+
+
+/* Footer/action rows on the final booking steps */
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer {
+  border-top: 1px solid var(--cc-line) !important;
+  background: #FBFDFE !important;
+}
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
+  text-shadow: none !important;
+  background-image: none !important;
+}
+
+
+/* ============================================================
+   54. MOBILE FINAL ACTIONS
+   ============================================================ */
+
+@media (max-width: 767.98px) {
+  body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .row {
+    gap: 10px;
+  }
+
+  body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
+    width: 100%;
+  }
+
+  body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .col,
+  body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .col-auto {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
