@@ -2486,3 +2486,61 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
   position: relative !important;
   z-index: 1 !important;
 }
+
+/* ============================================================
+   CORE CRUISES PATCH v1.11
+   - fixes airline/reederei dropdown being covered by date field
+   - date field only gets elevated while calendar is actually focused/open
+   - open Bootstrap-select dropdowns always sit on top
+   ============================================================ */
+
+/*
+ * v1.10 permanently raised the Reisezeitraum column above its sibling
+ * filter fields. That solved the calendar layering, but it also meant
+ * the date input could cover entries inside an open Reederei dropdown.
+ *
+ * Reset the date field's stacking level by default.
+ */
+#xt-cruisefinder-top .col:has(> #sdt) {
+  position: relative !important;
+  z-index: auto !important;
+}
+
+/*
+ * Only lift the date field while the user is actively in it / the
+ * calendar is open.
+ */
+#xt-cruisefinder-top .col:has(> #sdt):focus-within {
+  z-index: 13000 !important;
+}
+
+/*
+ * An opened BSS/Bootstrap dropdown must always win over neighbouring
+ * fields such as Reisezeitraum and Schiffe.
+ */
+#xt-cruisefinder-top .col.position-relative:has(.bss.dropdown > .dropdown-menu.show),
+#xt-cruisefinder-extended .col.position-relative:has(.bss.dropdown > .dropdown-menu.show) {
+  z-index: 40000 !important;
+}
+
+#xt-cruisefinder-top .bss.dropdown > .dropdown-menu.show,
+#xt-cruisefinder-extended .bss.dropdown > .dropdown-menu.show {
+  z-index: 40001 !important;
+}
+
+/*
+ * Keep the datepicker above the extended-search card only while the
+ * date field is active.
+ */
+#xt-cruisefinder-top .col:has(> #sdt):focus-within > .easepick-wrapper {
+  z-index: 30000 !important;
+}
+
+/*
+ * When another dropdown is open, the dormant Easepick host must not
+ * intercept clicks or visually overlap the dropdown.
+ */
+#xt-cruisefinder-top .col:has(> #sdt):not(:focus-within) > .easepick-wrapper {
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
