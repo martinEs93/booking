@@ -2345,3 +2345,51 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
   position: relative;
   z-index: 1 !important;
 }
+
+/* ============================================================
+   CORE CRUISES PATCH v1.8
+   - removes sticky desktop search sidebar
+   - datepicker now scrolls naturally with the page
+   - keeps calendar above result cards
+   ============================================================ */
+
+/*
+ * The datepicker issue was caused by the desktop search sidebar still
+ * being sticky. Once the open calendar makes the sidebar visually taller,
+ * the whole sticky block stays pinned until the page reaches its lower
+ * boundary. That makes the calendar appear to "wait" before moving.
+ *
+ * Solution: keep the sidebar in normal document flow on desktop.
+ */
+@media (min-width: 992px) {
+  #xt-page-search > aside {
+    position: relative !important;
+    top: auto !important;
+    align-self: flex-start !important;
+    z-index: 5000 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  #xt-search-main {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
+
+/* Keep the datepicker/calendar above cards while still scrolling normally */
+.easepick-wrapper,
+.datepicker,
+.ui-datepicker,
+[class*="easepick"],
+[class*="datepicker"] {
+  z-index: 20000 !important;
+}
+
+/* Search containers must not clip floating calendar UI */
+#xt-cruisefinder-collapse,
+#xt-cruisefinder-top,
+#xt-cruisefinder-extended,
+.xtc-search-cruisefinder {
+  overflow: visible !important;
+}
