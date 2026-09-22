@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Reisendendaten · Core Cruises</title>
-  <link rel="stylesheet" href="booking.css?v=20260922">
+  <link rel="stylesheet" href="booking.css?v=20260922-loyalty">
 </head>
 <body>
   <main class="card">
@@ -34,6 +34,7 @@
           <label>Geburtsdatum*<input name="lead_birth_date" type="text" inputmode="numeric" placeholder="TT.MM.JJJJ" maxlength="10" data-birth required></label>
           <label>Staatsangehörigkeit*<input name="lead_nationality" required></label>
           <label>E-Mail<input name="lead_email" type="email" readonly aria-describedby="emailHint"><small id="emailHint">Die E-Mail-Adresse ist für diesen Vorgang hinterlegt. Für Änderungen bitte Core Cruises kontaktieren.</small></label>
+          <label>Treuenummer Reederei (optional)<input name="lead_loyalty_number" autocomplete="off"></label>
           <label>Kabine*<select name="lead_cabin_index" required></select></label>
           <label>Telefon*<input name="lead_phone" type="tel" required></label>
           <label class="wide">Straße und Hausnummer*<input name="lead_street" required></label>
@@ -78,6 +79,6 @@
     </div>
   </main>
 
-  <script src="booking.js?v=20260922"></script>
+  <script src="booking.js?v=20260922-loyalty"></script>
 </body>
 </html>
