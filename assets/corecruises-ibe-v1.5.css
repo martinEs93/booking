@@ -2393,3 +2393,41 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
 .xtc-search-cruisefinder {
   overflow: visible !important;
 }
+
+/* ============================================================
+   CORE CRUISES PATCH v1.9
+   - datepicker gets real vertical space while open on desktop
+   - extended search no longer scrolls underneath the calendar
+   ============================================================ */
+
+/*
+ * CruiseCompass mounts Easepick directly after #sdt as an absolutely
+ * positioned .easepick-wrapper. Because absolute elements do not take
+ * up document space, the "Erweiterte Suche" section otherwise moves
+ * underneath the open calendar.
+ *
+ * While the date field/calendar has focus, reserve enough vertical
+ * room in the normal layout for the two-month desktop calendar.
+ */
+@media (min-width: 992px) {
+  #xt-cruisefinder-top .col:has(> #sdt):focus-within {
+    margin-bottom: 34rem !important;
+  }
+
+  /* Keep the popup anchored directly below the date input. */
+  #xt-cruisefinder-top .col:has(> #sdt) > .easepick-wrapper {
+    z-index: 25000 !important;
+  }
+
+  /* Smooth the layout change when opening/closing the calendar. */
+  #xt-cruisefinder-top .col:has(> #sdt) {
+    transition: margin-bottom .18s ease;
+  }
+}
+
+/* No artificial spacer on tablet/mobile. */
+@media (max-width: 991.98px) {
+  #xt-cruisefinder-top .col:has(> #sdt) {
+    margin-bottom: 1rem !important;
+  }
+}
