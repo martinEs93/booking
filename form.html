@@ -1,1 +1,83 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reisendendaten · Core Cruises</title><link rel="stylesheet" href="booking.css?v=20260920"></head><body><main class="card"><p class="eyebrow">CORE CRUISES</p><h1>Reisendendaten übermitteln</h1><p id="intro" class="muted">Der geschützte Vorgang wird geladen …</p><form id="form" autocomplete="off" hidden><p class="hint" id="passportNameHint"><strong>Bitte halte dein Reisedokument bereit.</strong> Gib alle Vornamen und deinen Nachnamen so an, wie sie in dem Dokument stehen, mit dem du reisen wirst: Nutzt du einen Personalausweis, übernimm die Angaben daraus; nutzt du einen Reisepass, übernimm sie aus deinem Reisepass. Dieser Hinweis bedeutet nicht, dass du einen Reisepass benötigst. Welches Dokument für deine Reise erforderlich ist, entnimmst du den Einreisebestimmungen.</p><details class="hint"><summary>Wie gebe ich Namen mit Umlauten oder Sonderzeichen ein?</summary><p>Orientiere dich an der maschinenlesbaren Schreibweise: Das sind die Zeilen mit vielen &lt;-Zeichen auf deinem Dokument – beim deutschen Personalausweis auf der Rückseite, beim Reisepass unten auf der Datenseite. Steht dort zum Beispiel MUELLER, gib MUELLER ein. Die &lt;-Zeichen selbst bitte weglassen und mehrere Vornamen durch Leerzeichen trennen.</p></details><section><h2>Reiseanmelder</h2><div class="grid"><label>Vorname*<input name="lead_first_name" aria-describedby="passportNameHint" required></label><label>Nachname*<input name="lead_last_name" aria-describedby="passportNameHint" required></label><label>Geburtsdatum*<input name="lead_birth_date" type="text" inputmode="numeric" placeholder="TT.MM.JJJJ" maxlength="10" data-birth required></label><label>Staatsangehörigkeit*<input name="lead_nationality" required></label><label>E-Mail<input name="lead_email" type="email" readonly aria-describedby="emailHint"><small id="emailHint">Die E-Mail-Adresse ist für diesen Vorgang hinterlegt. Für Änderungen bitte Core Cruises kontaktieren.</small></label><label>Kabine*<select name="lead_cabin_index" required></select></label><label>Telefon*<input name="lead_phone" type="tel" required></label><label class="wide">Straße und Hausnummer*<input name="lead_street" required></label><label>Postleitzahl*<input name="lead_postal_code" required></label><label>Ort*<input name="lead_city" required></label><label>Land*<input name="lead_country" value="Deutschland" required></label><label>Notfallkontakt*<input name="emergency_name" required></label><label>Notfallkontakt Telefon*<input name="emergency_phone" type="tel" required></label></div></section><section><div class="section-head"><h2>Weitere Reisende</h2><button id="add" class="secondary" type="button">+ Person hinzufügen</button></div><p class="hint">Bitte verwende auch für jede weitere Person deren eigenes Reisedokument und gib alle Vornamen sowie den Nachnamen vollständig an. Die Hinweise zur Namensschreibweise oben gelten für alle Reisenden.</p><div id="travelers"></div><p class="hint">Für jede weitere Person sind Vor- und Nachname, Geburtsdatum und Staatsangehörigkeit erforderlich.</p></section><label class="consent"><input id="dataAccuracy" name="data_accuracy" type="checkbox" value="20260920-v1" required><span>Ich bestätige, dass ich die Angaben für alle Reisenden geprüft habe. Alle Vornamen, Nachnamen und Geburtsdaten habe ich mit dem jeweils verwendeten Reisedokument abgeglichen und entsprechend den Hinweisen zur Namensschreibweise eingetragen. Die von mir übermittelten Angaben sind vollständig und korrekt.</span></label><label class="consent"><input id="privacy" name="privacy" type="checkbox" required> Ich bestätige die <a href="https://corecruises.de/datenschutz" target="_blank" rel="noopener">Datenschutzbestimmungen</a>.</label><button class="primary" type="submit">Daten sicher übermitteln</button><p id="message" class="message" role="alert"></p></form><div id="done" hidden><h2>Vielen Dank</h2><p>Deine Daten wurden sicher übermittelt. Du erhältst die nächsten Unterlagen per E-Mail.</p><p id="reference"></p></div></main><script src="booking.js?v=20260920-birth-mask"></script></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reisendendaten · Core Cruises</title>
+  <link rel="stylesheet" href="booking.css?v=20260922">
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow">CORE CRUISES</p>
+    <h1>Reisendendaten übermitteln</h1>
+    <p id="intro" class="muted">Der geschützte Vorgang wird geladen …</p>
+
+    <form id="form" autocomplete="off" hidden>
+      <div class="notice">
+        <strong>Wichtig:</strong> Mit der Übermittlung der Reisendendaten gibst du noch keine verbindliche Buchungserklärung ab und es wird noch keine Reise gebucht. Nach der Datenübermittlung erhältst du deine Reisezusammenfassung und die für die Buchung relevanten Reise- und Vertragsunterlagen zur Prüfung.
+      </div>
+
+      <p class="hint" id="passportNameHint">
+        <strong>Bitte halte dein Reisedokument bereit.</strong> Gib alle Vornamen und deinen Nachnamen so an, wie sie in dem Dokument stehen, mit dem du reisen wirst: Nutzt du einen Personalausweis, übernimm die Angaben daraus; nutzt du einen Reisepass, übernimm sie aus deinem Reisepass. Dieser Hinweis bedeutet nicht, dass du einen Reisepass benötigst. Welches Dokument für deine Reise erforderlich ist, entnimmst du den Einreisebestimmungen.
+      </p>
+
+      <details class="hint">
+        <summary>Wie gebe ich Namen mit Umlauten oder Sonderzeichen ein?</summary>
+        <p>Orientiere dich an der maschinenlesbaren Schreibweise: Das sind die Zeilen mit vielen &lt;-Zeichen auf deinem Dokument – beim deutschen Personalausweis auf der Rückseite, beim Reisepass unten auf der Datenseite. Steht dort zum Beispiel MUELLER, gib MUELLER ein. Die &lt;-Zeichen selbst bitte weglassen und mehrere Vornamen durch Leerzeichen trennen.</p>
+      </details>
+
+      <section>
+        <h2>Reiseanmelder</h2>
+        <div class="grid">
+          <label>Vorname*<input name="lead_first_name" aria-describedby="passportNameHint" required></label>
+          <label>Nachname*<input name="lead_last_name" aria-describedby="passportNameHint" required></label>
+          <label>Geburtsdatum*<input name="lead_birth_date" type="text" inputmode="numeric" placeholder="TT.MM.JJJJ" maxlength="10" data-birth required></label>
+          <label>Staatsangehörigkeit*<input name="lead_nationality" required></label>
+          <label>E-Mail<input name="lead_email" type="email" readonly aria-describedby="emailHint"><small id="emailHint">Die E-Mail-Adresse ist für diesen Vorgang hinterlegt. Für Änderungen bitte Core Cruises kontaktieren.</small></label>
+          <label>Kabine*<select name="lead_cabin_index" required></select></label>
+          <label>Telefon*<input name="lead_phone" type="tel" required></label>
+          <label class="wide">Straße und Hausnummer*<input name="lead_street" required></label>
+          <label>Postleitzahl*<input name="lead_postal_code" required></label>
+          <label>Ort*<input name="lead_city" required></label>
+          <label>Land*<input name="lead_country" value="Deutschland" required></label>
+          <label>Notfallkontakt*<input name="emergency_name" required></label>
+          <label>Notfallkontakt Telefon*<input name="emergency_phone" type="tel" required></label>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>Weitere Reisende</h2>
+          <button id="add" class="secondary" type="button">+ Person hinzufügen</button>
+        </div>
+        <p class="hint">Bitte verwende auch für jede weitere Person deren eigenes Reisedokument und gib alle Vornamen sowie den Nachnamen vollständig an. Die Hinweise zur Namensschreibweise oben gelten für alle Reisenden.</p>
+        <div id="travelers"></div>
+        <p class="hint">Für jede weitere Person sind Vor- und Nachname, Geburtsdatum, Staatsangehörigkeit und die Zuordnung zur Kabine erforderlich.</p>
+      </section>
+
+      <label class="consent">
+        <input id="dataAccuracy" name="data_accuracy" type="checkbox" value="20260920-v1" required>
+        <span>Ich bestätige, dass ich die Angaben für alle Reisenden geprüft habe. Alle Vornamen, Nachnamen und Geburtsdaten habe ich mit dem jeweils verwendeten Reisedokument abgeglichen und entsprechend den Hinweisen zur Namensschreibweise eingetragen. Die von mir übermittelten Angaben sind vollständig und korrekt.</span>
+      </label>
+
+      <div class="privacy-note">
+        <strong>Datenschutzhinweis:</strong> Wir verarbeiten die von dir angegebenen personenbezogenen Daten zur Vorbereitung und Durchführung der gewünschten Reisevermittlung. Weitere Informationen zur Verarbeitung deiner Daten, zu den Empfängern und zu deinen Datenschutzrechten findest du in unserer
+        <a href="https://www.corecruises.de/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a>.
+        Wenn du Daten weiterer Reisender oder eines Notfallkontakts übermittelst, stelle bitte sicher, dass diese Personen die Datenschutzinformationen von Core Cruises erhalten.
+      </div>
+
+      <button class="primary" type="submit">Daten der Reisenden übermitteln</button>
+      <p id="message" class="message" role="alert"></p>
+    </form>
+
+    <div id="done" hidden>
+      <h2>Vielen Dank</h2>
+      <p>Deine Reisendendaten wurden erfolgreich übermittelt.</p>
+      <p><strong>Damit wurde noch keine Reise gebucht.</strong> Du erhältst als Nächstes deine Reisezusammenfassung und die für die Buchung relevanten Reise- und Vertragsunterlagen zur Prüfung per E-Mail.</p>
+      <p id="reference"></p>
+    </div>
+  </main>
+
+  <script src="booking.js?v=20260922"></script>
+</body>
+</html>
