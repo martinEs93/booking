@@ -1,0 +1,2116 @@
+/*
+ * Core Cruises × CruiseCompass IBE
+ * Theme v1.0
+ *
+ * Brand palette
+ * Navy:       #0A1A2F
+ * Petrol:     #3FA9AE
+ * Gold:       #EDC361
+ * Background: #F4F7F9
+ * White:      #FFFFFF
+ *
+ * This stylesheet deliberately targets CruiseCompass xt-/xtc- selectors
+ * and only uses broader Bootstrap overrides where they improve consistency.
+ */
+
+:root {
+  --cc-navy: #0A1A2F;
+  --cc-navy-2: #123C53;
+  --cc-petrol: #3FA9AE;
+  --cc-petrol-dark: #26868B;
+  --cc-gold: #EDC361;
+  --cc-gold-dark: #D7A93E;
+  --cc-bg: #F4F7F9;
+  --cc-surface: #FFFFFF;
+  --cc-soft: #EEF4F6;
+  --cc-line: #D9E5EA;
+  --cc-text: #0A1A2F;
+  --cc-muted: #647383;
+  --cc-success: #218A67;
+  --cc-shadow-sm: 0 6px 20px rgba(10, 26, 47, .07);
+  --cc-shadow-md: 0 14px 38px rgba(10, 26, 47, .11);
+  --cc-radius-sm: 10px;
+  --cc-radius: 16px;
+  --cc-radius-lg: 22px;
+
+  --bs-primary: #0A1A2F;
+  --bs-primary-rgb: 10, 26, 47;
+  --bs-secondary: #3FA9AE;
+  --bs-secondary-rgb: 63, 169, 174;
+  --bs-warning: #EDC361;
+  --bs-warning-rgb: 237, 195, 97;
+  --bs-light: #F4F7F9;
+  --bs-light-rgb: 244, 247, 249;
+  --bs-body-color: #0A1A2F;
+  --bs-body-bg: #F4F7F9;
+  --bs-border-color: #D9E5EA;
+}
+
+html {
+  background: var(--cc-bg);
+}
+
+body {
+  background: var(--cc-bg) !important;
+  color: var(--cc-text) !important;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Global polish ---------- */
+
+a {
+  color: var(--cc-navy);
+}
+
+a:hover {
+  color: var(--cc-petrol-dark);
+}
+
+.form-label {
+  color: var(--cc-navy);
+  font-weight: 700;
+  margin-bottom: .45rem;
+  letter-spacing: -.01em;
+}
+
+.form-control,
+.form-select,
+.bss.dropdown > .form-select {
+  min-height: 48px;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 12px !important;
+  background-color: #fff !important;
+  color: var(--cc-navy) !important;
+  box-shadow: none !important;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.form-control:hover,
+.form-select:hover,
+.bss.dropdown > .form-select:hover {
+  border-color: rgba(63, 169, 174, .65) !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+.bss.dropdown > .form-select:focus,
+.bss.dropdown > .form-select.show {
+  border-color: var(--cc-petrol) !important;
+  box-shadow: 0 0 0 4px rgba(63, 169, 174, .14) !important;
+}
+
+.dropdown-menu {
+  padding: .55rem !important;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: var(--cc-shadow-md) !important;
+}
+
+.dropdown-item {
+  border-radius: 9px !important;
+  color: var(--cc-navy) !important;
+  padding: .58rem .68rem !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item.selected {
+  background: rgba(63, 169, 174, .11) !important;
+  color: var(--cc-navy) !important;
+}
+
+.dropdown-header {
+  color: var(--cc-petrol-dark) !important;
+  font-weight: 800;
+}
+
+.btn {
+  border-radius: 11px !important;
+  font-weight: 750;
+  letter-spacing: -.01em;
+  box-shadow: none !important;
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease,
+              border-color .16s ease, color .16s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(63, 169, 174, .18) !important;
+}
+
+/* ---------- Overall search layout ---------- */
+
+.container-xxl {
+  max-width: 1560px;
+}
+
+#xt-page-search {
+  gap: 20px;
+  padding: 20px;
+}
+
+#xt-page-search > aside {
+  border-radius: var(--cc-radius-lg);
+}
+
+#xt-search-main {
+  min-width: 0;
+}
+
+@media (min-width: 992px) {
+  #xt-page-search > aside {
+    position: sticky;
+    top: 18px;
+    align-self: flex-start;
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+    overflow-x: visible;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(63, 169, 174, .45) transparent;
+  }
+
+  #xt-page-search > aside::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  #xt-page-search > aside::-webkit-scrollbar-thumb {
+    background: rgba(63, 169, 174, .45);
+    border-radius: 999px;
+  }
+}
+
+/* ---------- Cruise finder: main card ---------- */
+
+#xt-cruisefinder-collapse {
+  border-radius: var(--cc-radius-lg);
+}
+
+#xt-cruisefinder-top {
+  position: relative;
+  overflow: visible;
+  padding: 24px !important;
+  border-radius: var(--cc-radius-lg) !important;
+  color: #fff !important;
+  background:
+    radial-gradient(circle at 90% 7%, rgba(237, 195, 97, .24), transparent 24%),
+    radial-gradient(circle at 82% 22%, rgba(63, 169, 174, .27), transparent 34%),
+    linear-gradient(138deg, var(--cc-navy) 0%, var(--cc-navy-2) 58%, #17616d 100%) !important;
+  box-shadow: var(--cc-shadow-md);
+}
+
+#xt-cruisefinder-top::after {
+  content: "";
+  position: absolute;
+  inset: auto -60px -90px auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(63, 169, 174, .12);
+  pointer-events: none;
+}
+
+#xt-cruisefinder-top .xtc-search-cruisefinder-title {
+  margin: 0 0 1.05rem !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-size: clamp(1.45rem, 2vw, 2rem) !important;
+  font-weight: 850;
+  letter-spacing: -.035em;
+}
+
+#xt-cruisefinder-top .form-label {
+  color: rgba(255, 255, 255, .92) !important;
+}
+
+#xt-cruisefinder-top .form-control,
+#xt-cruisefinder-top .form-select,
+#xt-cruisefinder-top .bss.dropdown > .form-select {
+  border-color: rgba(255,255,255,.30) !important;
+  background: rgba(255,255,255,.98) !important;
+}
+
+.xtc-search-cruisefinder-button,
+.xtc-search-cruisefinder-extended-button {
+  min-height: 50px;
+  border: 1px solid rgba(10, 26, 47, .08) !important;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+  font-size: 1rem;
+  font-weight: 850;
+  box-shadow: 0 8px 20px rgba(10, 26, 47, .16) !important;
+}
+
+.xtc-search-cruisefinder-button:hover,
+.xtc-search-cruisefinder-extended-button:hover {
+  background: var(--cc-gold-dark) !important;
+  color: var(--cc-navy) !important;
+  box-shadow: 0 10px 24px rgba(10, 26, 47, .20) !important;
+}
+
+/* ---------- Extended search ---------- */
+
+#xt-cruisefinder-extended {
+  margin-top: 16px;
+  padding: 22px !important;
+  border: 1px solid var(--cc-line);
+  border-radius: var(--cc-radius-lg) !important;
+  background: rgba(255,255,255,.97) !important;
+  color: var(--cc-text) !important;
+  box-shadow: var(--cc-shadow-sm);
+}
+
+#xt-cruisefinder-extended .xtc-search-cruisefinder-extended-title {
+  margin: 0 0 1.1rem !important;
+  padding: 0 !important;
+  color: var(--cc-navy);
+  font-size: 1.35rem !important;
+  font-weight: 850;
+  letter-spacing: -.025em;
+}
+
+.xtc-search-cruisefinder-collapse {
+  min-height: 48px;
+  display: flex !important;
+  align-items: center;
+  gap: .5rem;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  box-shadow: 0 3px 12px rgba(10, 26, 47, .045) !important;
+}
+
+.xtc-search-cruisefinder-collapse:hover,
+.xtc-search-cruisefinder-collapse[aria-expanded="true"] {
+  border-color: rgba(63, 169, 174, .62) !important;
+  background: rgba(63, 169, 174, .08) !important;
+  color: var(--cc-navy) !important;
+}
+
+.xtc-search-cruisefinder-collapse > svg,
+.xtc-search-cruisefinder-collapse > i,
+.xtc-search-cruisefinder-collapse .svg-inline--fa {
+  color: var(--cc-petrol);
+}
+
+.xtc-search-cruisefinder-collapse .icontainer {
+  margin-left: auto;
+}
+
+.xtc-search-cruisefinder-mobilecollpase {
+  min-height: 52px;
+  border: 0 !important;
+  border-radius: 0 0 14px 14px !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+/* ---------- Search summary ---------- */
+
+#xt-search-summary {
+  margin: 0 0 16px !important;
+  padding: 16px 18px !important;
+  border: 1px solid var(--cc-line);
+  border-radius: var(--cc-radius);
+  background: rgba(255,255,255,.94) !important;
+  color: var(--cc-navy) !important;
+  box-shadow: var(--cc-shadow-sm);
+}
+
+#xt-search-summary p {
+  font-weight: 800;
+  letter-spacing: -.015em;
+}
+
+#xt-locale-switch {
+  min-height: 42px;
+  border-radius: 10px !important;
+}
+
+/* ---------- Active search criteria ---------- */
+
+#xt-search-criteria {
+  margin: 12px 0 16px !important;
+}
+
+#xt-search-criteria .btn {
+  margin-right: .35rem;
+  padding: .48rem .72rem;
+  border: 1px solid rgba(63, 169, 174, .22) !important;
+  border-radius: 999px !important;
+  background: rgba(63, 169, 174, .10) !important;
+  color: var(--cc-navy) !important;
+  opacity: 1 !important;
+  font-size: .84rem;
+  font-weight: 700;
+}
+
+/* ---------- Pagination + sort ---------- */
+
+.pagination {
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.pagination .page-link {
+  min-width: 40px;
+  min-height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  box-shadow: none !important;
+}
+
+.pagination .page-link:hover {
+  border-color: var(--cc-petrol) !important;
+  background: rgba(63, 169, 174, .08) !important;
+}
+
+.pagination .page-item.active .page-link {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+.pagination .page-item.disabled .page-link {
+  background: #eef2f4 !important;
+  color: #9aa6b1 !important;
+}
+
+#xt-sort + .bss.dropdown > .form-select,
+#xt-sort.form-select {
+  min-height: 44px;
+}
+
+/* ---------- Results list ---------- */
+
+#xt-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 0 !important;
+}
+
+#xt-search-result > .list-group-item {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(217, 229, 234, .95) !important;
+  border-radius: var(--cc-radius-lg) !important;
+  background: #fff !important;
+  color: var(--cc-text);
+  box-shadow: var(--cc-shadow-sm);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+#xt-search-result > .list-group-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(63, 169, 174, .45) !important;
+  box-shadow: var(--cc-shadow-md);
+}
+
+/* Result header */
+#xt-search-result > .list-group-item > .row.border-bottom {
+  margin: 0 !important;
+  padding: 17px 20px 14px;
+  border-bottom: 1px solid #e8eff2 !important;
+  background: linear-gradient(180deg, #fff 0%, #fbfdfe 100%);
+}
+
+#xt-search-result h3.h2 {
+  margin: 0 !important;
+  color: var(--cc-navy);
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem) !important;
+  line-height: 1.2;
+  font-weight: 850;
+  letter-spacing: -.025em;
+}
+
+#xt-search-result h3.h2 + p {
+  margin-top: .28rem !important;
+  margin-bottom: 0 !important;
+  color: var(--cc-muted);
+  font-size: .95rem;
+}
+
+#xt-search-result .xt-provider-logo {
+  max-height: 48px;
+  width: auto;
+}
+
+/* Result content */
+#xt-search-result > .list-group-item > .row.gx-3:not(.border-bottom) {
+  margin: 0 !important;
+  padding: 16px 20px 12px;
+}
+
+#xt-search-result .ratio {
+  overflow: hidden;
+  border-radius: 16px;
+  background: #e9eff2;
+  box-shadow: inset 0 0 0 1px rgba(10, 26, 47, .03);
+}
+
+#xt-search-result .ratio img.xt-of-cover {
+  border-radius: 16px !important;
+  transition: transform .35s ease;
+}
+
+#xt-search-result > .list-group-item:hover .ratio img.xt-of-cover {
+  transform: scale(1.018);
+}
+
+/* Meta icons */
+#xt-search-result .svg-inline--fa {
+  color: var(--cc-petrol);
+}
+
+#xt-search-result [data-offer-target="desktop"] {
+  margin-top: .1rem;
+}
+
+#xt-search-result .xt-date {
+  min-width: 58px;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid var(--cc-line);
+  border-radius: 11px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(10,26,47,.06);
+}
+
+#xt-search-result .xt-date .xt-month {
+  padding: 3px 10px;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+  font-weight: 850;
+  text-align: center;
+}
+
+#xt-search-result .xt-date .xt-day {
+  padding: 4px 10px 0;
+  color: var(--cc-navy);
+  font-size: 1.15rem;
+  font-weight: 850;
+  text-align: center;
+}
+
+#xt-search-result .xt-date .xt-year {
+  padding: 0 10px 5px;
+  color: var(--cc-muted);
+  font-size: .72rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Promo / main price */
+#xt-search-result [data-offer-target="promo"] {
+  max-width: 100%;
+  padding: .42rem .68rem;
+  border: 0 !important;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+  font-weight: 850;
+  letter-spacing: .01em;
+}
+
+#xt-search-result [data-offer-target="price"] {
+  margin-top: .6rem;
+  margin-bottom: .3rem;
+  color: var(--cc-muted);
+  font-size: .9rem;
+  line-height: 1.15;
+}
+
+#xt-search-result [data-offer-target="price"] .h1 {
+  color: var(--cc-navy);
+  font-size: clamp(1.75rem, 2.6vw, 2.35rem) !important;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -.045em;
+}
+
+/* Cabin price tiles */
+#xt-search-result .mb-2.row > .col-xl-3.col-sm-6 {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#xt-search-result .mb-2.row > .col-xl-3.col-sm-6 > p {
+  margin-bottom: 0 !important;
+}
+
+#xt-search-result .mb-2.row > .col-xl-3.col-sm-6 > .fw-bold {
+  color: var(--cc-navy);
+  font-size: .88rem;
+  font-weight: 850 !important;
+}
+
+#xt-search-result [data-offer-target="inside"],
+#xt-search-result [data-offer-target="outside"],
+#xt-search-result [data-offer-target="balcony"],
+#xt-search-result [data-offer-target="suite"] {
+  margin-top: .15rem;
+  color: var(--cc-muted);
+  font-size: .93rem;
+}
+
+/* Result footer */
+#xt-search-result .xtc-search-offer-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px !important;
+  border-top: 1px solid #e8eff2;
+  background: #fbfdfe !important;
+  color: var(--cc-text) !important;
+}
+
+#xt-search-result .xtc-search-offer-collapse {
+  min-height: 46px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid var(--cc-line) !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+}
+
+#xt-search-result .xtc-search-offer-collapse:hover {
+  border-color: var(--cc-petrol) !important;
+  background: rgba(63, 169, 174, .07) !important;
+}
+
+#xt-search-result .xtc-search-offer-button {
+  min-height: 46px;
+  padding: .68rem 1.1rem;
+  border: 1px solid rgba(10, 26, 47, .07) !important;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+  font-weight: 900;
+  box-shadow: 0 7px 18px rgba(10, 26, 47, .13) !important;
+}
+
+#xt-search-result .xtc-search-offer-button:hover {
+  background: var(--cc-gold-dark) !important;
+  color: var(--cc-navy) !important;
+  box-shadow: 0 9px 22px rgba(10, 26, 47, .17) !important;
+}
+
+/* ---------- Details area loaded inside result ---------- */
+
+#xt-search-result [data-offer-target="details"] {
+  margin: 0 !important;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #fff;
+}
+
+/* ---------- Fixed Core Cruises footer ---------- */
+
+#xt-ref-navbar {
+  min-height: 66px;
+  border: 0 !important;
+  border-top: 1px solid rgba(255,255,255,.09) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+  box-shadow: 0 -8px 28px rgba(10, 26, 47, .14);
+}
+
+#xt-ref-navbar .navbar-brand,
+#xt-ref-navbar .nav-link {
+  color: #fff !important;
+}
+
+#xt-ref-navbar .navbar-brand {
+  font-weight: 800;
+}
+
+#xt-ref-navbar .navbar-brand img {
+  max-height: 36px;
+  width: auto;
+  border-radius: 8px;
+}
+
+#xt-ref-navbar .nav-link {
+  opacity: .82;
+  transition: opacity .16s ease, color .16s ease;
+}
+
+#xt-ref-navbar .nav-link:hover {
+  color: var(--cc-gold) !important;
+  opacity: 1;
+}
+
+#xt-ref-navbar .navbar-toggler {
+  border-color: rgba(255,255,255,.34) !important;
+  background: rgba(255,255,255,.08);
+}
+
+#xt-ref-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ---------- Generic CruiseCompass primary actions beyond search ---------- */
+
+main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-button):not(.xtc-search-cruisefinder-extended-button) {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-button):not(.xtc-search-cruisefinder-extended-button):hover {
+  border-color: var(--cc-petrol-dark) !important;
+  background: var(--cc-petrol-dark) !important;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 991.98px) {
+  #xt-page-search {
+    display: block;
+    padding: 12px;
+  }
+
+  #xt-page-search > aside {
+    margin-bottom: 14px;
+  }
+
+  #xt-cruisefinder-top,
+  #xt-cruisefinder-extended {
+    border-radius: 18px !important;
+  }
+
+  #xt-search-summary {
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body {
+    font-size: .96rem;
+  }
+
+  #xt-page-search {
+    padding: 8px;
+  }
+
+  #xt-cruisefinder-top,
+  #xt-cruisefinder-extended {
+    padding: 18px !important;
+  }
+
+  #xt-search-summary {
+    align-items: flex-start !important;
+    gap: 10px !important;
+    padding: 14px !important;
+  }
+
+  #xt-search-summary p {
+    font-size: .92rem;
+  }
+
+  #xt-search-result {
+    gap: 14px;
+  }
+
+  #xt-search-result > .list-group-item {
+    border-radius: 18px !important;
+  }
+
+  #xt-search-result > .list-group-item > .row.border-bottom {
+    padding: 14px 15px 12px;
+  }
+
+  #xt-search-result > .list-group-item > .row.gx-3:not(.border-bottom) {
+    padding: 14px 15px 10px;
+  }
+
+  #xt-search-result h3.h2 {
+    font-size: 1.16rem !important;
+  }
+
+  #xt-search-result .xt-provider-logo {
+    max-height: 38px;
+  }
+
+  #xt-search-result .xtc-search-offer-footer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 15px !important;
+  }
+
+  #xt-search-result .xtc-search-offer-collapse,
+  #xt-search-result .xtc-search-offer-button {
+    width: 100%;
+  }
+
+  #xt-search-result [data-offer-target="price"] .h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .pagination .page-link {
+    min-width: 38px;
+    min-height: 38px;
+  }
+
+  #xt-ref-navbar {
+    min-height: 58px;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* ============================================================
+   CORE CRUISES PATCH v1.2
+   - removes decorative circle overlay from search box
+   - removes CruiseCompass split-icon button styling
+   - unifies search, details and offer buttons
+   ============================================================ */
+
+/* Remove decorative circle overlay in main search */
+#xt-cruisefinder-top::after {
+  display: none !important;
+}
+
+/* ---------- Search buttons: remove split icon area ---------- */
+
+.xtc-search-cruisefinder-button.has-icon,
+.xtc-search-cruisefinder-extended-button.has-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .6rem !important;
+  width: 100%;
+  padding: .8rem 1.1rem !important;
+  overflow: visible !important;
+}
+
+.xtc-search-cruisefinder-button.has-icon .icontainer,
+.xtc-search-cruisefinder-extended-button.has-icon .icontainer {
+  position: static !important;
+  inset: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.xtc-search-cruisefinder-button.has-icon .icontainer svg,
+.xtc-search-cruisefinder-extended-button.has-icon .icontainer svg {
+  width: 1em !important;
+  height: 1em !important;
+  color: var(--cc-navy) !important;
+}
+
+/* ---------- Mobile search toggle: remove split icon area ---------- */
+
+.xtc-search-cruisefinder-mobilecollpase.has-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .6rem !important;
+}
+
+.xtc-search-cruisefinder-mobilecollpase.has-icon .icontainer {
+  position: static !important;
+  inset: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.xtc-search-cruisefinder-mobilecollpase.has-icon .icontainer svg {
+  color: #fff !important;
+}
+
+/* ---------- Reisedetails button ---------- */
+
+#xt-search-result .xtc-search-offer-collapse.has-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .45rem !important;
+  min-height: 46px;
+  padding: .78rem 1rem !important;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  overflow: visible !important;
+}
+
+#xt-search-result .xtc-search-offer-collapse.has-icon:hover {
+  border-color: var(--cc-petrol) !important;
+  background: rgba(63, 169, 174, .07) !important;
+  color: var(--cc-navy) !important;
+}
+
+#xt-search-result .xtc-search-offer-collapse.has-icon .icontainer {
+  position: static !important;
+  inset: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+#xt-search-result .xtc-search-offer-collapse.has-icon .icontainer svg {
+  width: .8em !important;
+  height: .8em !important;
+  color: var(--cc-petrol) !important;
+}
+
+/* ---------- Angebot prüfen button ---------- */
+
+#xt-search-result .xtc-search-offer-button.has-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .55rem !important;
+  min-height: 46px;
+  padding: .78rem 1.15rem !important;
+  border: 1px solid var(--cc-gold) !important;
+  border-radius: 12px !important;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+  font-weight: 900 !important;
+  line-height: 1.15 !important;
+  overflow: visible !important;
+  box-shadow: 0 7px 18px rgba(10, 26, 47, .13) !important;
+}
+
+#xt-search-result .xtc-search-offer-button.has-icon:hover {
+  border-color: var(--cc-gold-dark) !important;
+  background: var(--cc-gold-dark) !important;
+  color: var(--cc-navy) !important;
+  box-shadow: 0 9px 22px rgba(10, 26, 47, .17) !important;
+}
+
+#xt-search-result .xtc-search-offer-button.has-icon .icontainer {
+  position: static !important;
+  inset: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+#xt-search-result .xtc-search-offer-button.has-icon .icontainer svg {
+  width: .95em !important;
+  height: .95em !important;
+  color: var(--cc-navy) !important;
+}
+
+/* Keep button sizing clean on mobile */
+@media (max-width: 767.98px) {
+  #xt-search-result .xtc-search-offer-collapse.has-icon,
+  #xt-search-result .xtc-search-offer-button.has-icon {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   CORE CRUISES PATCH v1.3
+   Angebotsdetail / Termine & Preise / Tabs / Breadcrumb
+   ============================================================ */
+
+
+/* ============================================================
+   33. BREADCRUMB / BUCHUNGSFORTSCHRITT
+   ============================================================ */
+
+#xt-breadcrumb {
+  gap: 6px !important;
+  padding: 8px 0 12px;
+  background: transparent !important;
+}
+
+#xt-breadcrumb .btn {
+  min-height: 42px;
+  padding: .62rem .9rem !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--cc-line) !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  font-weight: 800 !important;
+  box-shadow: none !important;
+}
+
+#xt-breadcrumb .btn.btn-primary {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+#xt-breadcrumb .btn.btn-light.disabled,
+#xt-breadcrumb .btn:disabled {
+  border-color: #e4ecef !important;
+  background: #eef3f5 !important;
+  color: #8b98a4 !important;
+  opacity: 1 !important;
+}
+
+#xt-breadcrumb .btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+#xt-locale-switch > .btn {
+  min-width: 44px;
+  min-height: 42px;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+
+
+/* ============================================================
+   34. ANGEBOTSDETAIL – OUTER CARD
+   ============================================================ */
+
+.card:has(#xt-offer-tabs) {
+  overflow: hidden;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: var(--cc-radius-lg) !important;
+  background: #fff !important;
+  box-shadow: var(--cc-shadow-sm) !important;
+}
+
+.card:has(#xt-offer-tabs) > .card-header {
+  padding: 12px 14px 0 !important;
+  border-bottom: 1px solid var(--cc-line) !important;
+  background: #fbfdfe !important;
+}
+
+
+/* ============================================================
+   35. ANGEBOTSDETAIL – TABS
+   ============================================================ */
+
+.nav-tabs.card-header-tabs {
+  gap: 6px;
+  margin: 0 !important;
+  border-bottom: 0 !important;
+  flex-wrap: wrap;
+}
+
+.nav-tabs.card-header-tabs .nav-link {
+  margin: 0 !important;
+  padding: .7rem .9rem !important;
+  border: 1px solid transparent !important;
+  border-radius: 10px 10px 0 0 !important;
+  background: transparent !important;
+  color: var(--cc-muted) !important;
+  font-weight: 800 !important;
+  box-shadow: none !important;
+}
+
+.nav-tabs.card-header-tabs .nav-link:hover {
+  border-color: rgba(63,169,174,.25) !important;
+  background: rgba(63,169,174,.07) !important;
+  color: var(--cc-navy) !important;
+}
+
+.nav-tabs.card-header-tabs .nav-link.active {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+#xt-offer-tabs .card-body {
+  padding: 24px !important;
+}
+
+
+/* ============================================================
+   36. ANGEBOTSDETAIL – ÜBERSICHT
+   ============================================================ */
+
+#xt-overview-tab h1 {
+  color: var(--cc-navy) !important;
+  font-size: clamp(1.45rem, 2.2vw, 2.15rem) !important;
+  line-height: 1.12 !important;
+  font-weight: 900 !important;
+  letter-spacing: -.035em;
+}
+
+#xt-overview-tab h1 + p {
+  margin-top: .35rem !important;
+  color: var(--cc-muted) !important;
+  font-size: 1rem;
+}
+
+#xt-provider-logo {
+  max-height: 62px !important;
+  max-width: 190px;
+  width: auto;
+}
+
+#xt-offer-image img {
+  overflow: hidden;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 28px rgba(10,26,47,.10);
+}
+
+#xt-offer-overview > .row {
+  height: 100%;
+  align-content: center;
+  padding: 18px 12px !important;
+  border: 1px solid var(--cc-line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fbfdfe 0%, #f6fafb 100%);
+}
+
+#xt-offer-overview .col-5.text-end {
+  color: var(--cc-navy) !important;
+  font-weight: 800;
+}
+
+#xt-offer-overview .col-5.text-end .svg-inline--fa {
+  margin-left: .25rem;
+  color: var(--cc-petrol) !important;
+}
+
+#xt-offer-overview .col-7 {
+  color: var(--cc-muted);
+}
+
+#xt-offer-from-prices .d-grid {
+  gap: 10px !important;
+}
+
+#xt-offer-from-prices .btn {
+  min-height: 60px;
+  padding: .72rem .85rem !important;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 13px !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  text-align: center;
+  font-size: 1rem !important;
+  box-shadow: 0 4px 14px rgba(10,26,47,.045) !important;
+}
+
+#xt-offer-from-prices .btn strong {
+  color: var(--cc-navy);
+  font-size: 1.16em;
+  font-weight: 900;
+}
+
+#xt-offer-from-prices .btn:hover {
+  border-color: var(--cc-gold) !important;
+  background: rgba(237,195,97,.14) !important;
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   37. DETAIL-TABS – ALLGEMEIN
+   ============================================================ */
+
+#xt-offer-tabs h2,
+#xt-offer-tabs h3,
+#xt-offer-tabs .h3,
+#xt-offer-tabs .h4 {
+  color: var(--cc-navy) !important;
+  font-weight: 850 !important;
+  letter-spacing: -.02em;
+}
+
+#xt-offer-tabs .border-bottom {
+  border-color: var(--cc-line) !important;
+}
+
+#xt-offer-tabs .card:not(:has(#xt-offer-tabs)) {
+  border-color: var(--cc-line) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+
+#xt-offer-tabs .card-header {
+  border-bottom: 1px solid var(--cc-line) !important;
+  background: #f7fafb !important;
+  color: var(--cc-navy) !important;
+  font-weight: 850;
+}
+
+#xt-offer-tabs .list-group-item {
+  border-color: var(--cc-line) !important;
+  color: var(--cc-navy) !important;
+}
+
+#xt-offer-tabs .list-group-item-action:hover {
+  background: rgba(63,169,174,.07) !important;
+}
+
+#xt-offer-tabs .list-group-item.active {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+
+/* ============================================================
+   38. ROUTE / TABELLE
+   ============================================================ */
+
+#xt-itinerary-tab [data-route-target="map"] img {
+  border-radius: 16px !important;
+  box-shadow: var(--cc-shadow-sm);
+}
+
+#xt-itinerary-tab .table-responsive {
+  overflow: hidden;
+  border: 1px solid var(--cc-line);
+  border-radius: 14px;
+}
+
+#xt-itinerary-tab .table {
+  margin-bottom: 0;
+}
+
+#xt-itinerary-tab .table thead th {
+  padding: .75rem .7rem;
+  border-bottom: 0 !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+  font-weight: 800;
+}
+
+#xt-itinerary-tab .table tbody td {
+  padding: .68rem .7rem;
+  border-color: #e6eef1 !important;
+  color: var(--cc-navy);
+}
+
+#xt-itinerary-tab .table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: rgba(63,169,174,.055) !important;
+}
+
+
+/* ============================================================
+   39. DECKPLAN / KABINEN / LEISTUNGEN
+   ============================================================ */
+
+#xt-decksplan-tab img {
+  border-radius: 14px;
+}
+
+#xt-decksplan-tab table,
+#xt-cabins-tab table {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+#xt-cabins-tab .tab-content {
+  padding: 18px;
+  border: 1px solid var(--cc-line);
+  border-radius: 14px;
+  background: #fbfdfe;
+}
+
+#xt-services-tab .fa-li .svg-inline--fa:not(.text-danger):not(.text-success) {
+  color: var(--cc-petrol) !important;
+}
+
+#xt-services-tab .text-success {
+  color: var(--cc-success) !important;
+}
+
+
+/* ============================================================
+   40. TERMINE & PREISE – OUTER CARD
+   ============================================================ */
+
+#xt-dates-and-prices {
+  overflow: hidden;
+  margin-top: 18px;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: var(--cc-radius-lg) !important;
+  background: #fff !important;
+  box-shadow: var(--cc-shadow-sm) !important;
+}
+
+#xt-dates-and-prices > .card-header {
+  padding: 18px 22px !important;
+  border-bottom: 0 !important;
+  background:
+    linear-gradient(135deg, var(--cc-navy) 0%, #154257 58%, #1c6b73 100%) !important;
+  color: #fff !important;
+}
+
+#xt-dates-and-prices > .card-header h2 {
+  color: #fff !important;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: -.03em;
+}
+
+#xt-dates-and-prices > .card-body {
+  padding: 20px !important;
+}
+
+
+/* ============================================================
+   41. TERMINE & PREISE – FILTER
+   ============================================================ */
+
+#xt-offer-filter > .row > .col-12 {
+  position: sticky;
+  top: 18px;
+}
+
+#xt-offer-filter .list-group {
+  overflow: hidden;
+  border: 1px solid var(--cc-line);
+  border-radius: 13px;
+}
+
+#xt-offer-filter .list-group-item {
+  border-color: var(--cc-line) !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  font-weight: 700;
+}
+
+#xt-offer-filter .list-group-item:hover {
+  background: rgba(63,169,174,.07) !important;
+}
+
+#xt-offer-filter .list-group-item.active {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+#xt-offer-filter .card {
+  overflow: hidden;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 13px !important;
+  box-shadow: none !important;
+}
+
+#xt-offer-filter .card-header {
+  padding: .75rem .9rem;
+  border-bottom: 1px solid var(--cc-line) !important;
+  background: #f7fafb !important;
+  color: var(--cc-navy) !important;
+  font-weight: 850;
+}
+
+#xt-offer-filter .badge {
+  border-radius: 999px !important;
+  background: rgba(63,169,174,.13) !important;
+  color: var(--cc-navy) !important;
+  font-weight: 800;
+}
+
+#xt-offer-filter .form-label {
+  margin-top: .15rem;
+}
+
+.xtc-offer-update-button {
+  min-height: 46px;
+  border: 1px solid var(--cc-petrol-dark) !important;
+  border-radius: 11px !important;
+  background: var(--cc-petrol-dark) !important;
+  color: #fff !important;
+  font-weight: 850 !important;
+}
+
+.xtc-offer-update-button:hover {
+  background: var(--cc-navy) !important;
+  border-color: var(--cc-navy) !important;
+}
+
+
+/* ============================================================
+   42. ANGEBOTSLISTE – KATEGORIEHEADER
+   ============================================================ */
+
+#xt-offer-main [data-offerfilter-target="header"] {
+  overflow: hidden;
+  margin-bottom: 10px !important;
+  border: 0 !important;
+  border-radius: 13px !important;
+  box-shadow: none !important;
+}
+
+#xt-offer-main [data-offerfilter-target="header"] .card-header {
+  padding: .85rem 1rem !important;
+  border: 0 !important;
+  background: rgba(10,26,47,.94) !important;
+  color: #fff !important;
+  font-weight: 850;
+}
+
+
+/* ============================================================
+   43. ANGEBOTSLISTE – EINZELNE TARIFE
+   ============================================================ */
+
+#xt-offer-main [data-offerfilter-target="offer"] {
+  overflow: hidden;
+  margin-bottom: 12px !important;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 16px !important;
+  background: #fff !important;
+  box-shadow: 0 5px 18px rgba(10,26,47,.055) !important;
+  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+#xt-offer-main [data-offerfilter-target="offer"]:hover {
+  border-color: rgba(63,169,174,.45) !important;
+  box-shadow: 0 10px 28px rgba(10,26,47,.09) !important;
+  transform: translateY(-1px);
+}
+
+#xt-offer-main .xt-offer-vacancy {
+  padding: 18px !important;
+}
+
+#xt-offer-main .xt-offer-vacancy .fa-li .svg-inline--fa {
+  color: var(--cc-petrol) !important;
+}
+
+#xt-offer-main .xt-offer-vacancy li {
+  margin-bottom: .28rem;
+  color: var(--cc-navy);
+}
+
+#xt-offer-main .xt-offer-promo-description {
+  margin-top: .55rem;
+  color: var(--cc-navy) !important;
+  font-weight: 800;
+}
+
+#xt-offer-main .xt-offer-promo-description .xt-promo-description {
+  display: inline-block;
+  padding: .22rem .55rem;
+  border-radius: 999px;
+  background: rgba(237,195,97,.25);
+  color: var(--cc-navy);
+}
+
+#xt-offer-main [data-vacancy-target="price"] {
+  margin: 0 0 .7rem !important;
+  color: var(--cc-navy) !important;
+  font-size: 1.35rem;
+  font-weight: 900 !important;
+  letter-spacing: -.025em;
+}
+
+#xt-offer-main [data-action="vacancy#check"] {
+  min-height: 44px;
+  padding: .68rem 1rem !important;
+  border: 1px solid var(--cc-gold) !important;
+  border-radius: 11px !important;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+  font-weight: 900 !important;
+  box-shadow: 0 6px 16px rgba(10,26,47,.11) !important;
+}
+
+#xt-offer-main [data-action="vacancy#check"]:hover {
+  border-color: var(--cc-gold-dark) !important;
+  background: var(--cc-gold-dark) !important;
+  color: var(--cc-navy) !important;
+  box-shadow: 0 8px 20px rgba(10,26,47,.15) !important;
+}
+
+#xt-offer-main .xt-offer-vacancy-message:not(:empty) {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(63,169,174,.25);
+  border-radius: 10px;
+  background: rgba(63,169,174,.08);
+  color: var(--cc-navy);
+}
+
+
+/* ============================================================
+   44. GENERISCHE DETAIL-CARDS
+   ============================================================ */
+
+#xt-offer-tabs .table {
+  color: var(--cc-navy);
+}
+
+#xt-offer-tabs p,
+#xt-offer-tabs li {
+  color: var(--cc-text);
+}
+
+#xt-offer-tabs .text-muted,
+#xt-dates-and-prices .text-muted {
+  color: var(--cc-muted) !important;
+}
+
+
+/* ============================================================
+   45. RESPONSIVE – ANGEBOTSDETAIL
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+  #xt-offer-filter > .row > .col-12 {
+    position: static;
+  }
+
+  #xt-offer-overview > .row {
+    margin-top: 12px;
+  }
+
+  #xt-offer-from-prices {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #xt-breadcrumb {
+    display: none !important;
+  }
+
+  [data-breadcrumb-target="mobile"] {
+    display: block !important;
+    min-height: 46px;
+    margin-bottom: 10px !important;
+  }
+
+  .card:has(#xt-offer-tabs) {
+    border-radius: 18px !important;
+  }
+
+  .card:has(#xt-offer-tabs) > .card-header {
+    padding: 9px 9px 0 !important;
+  }
+
+  .nav-tabs.card-header-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .nav-tabs.card-header-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-tabs.card-header-tabs .nav-link {
+    white-space: nowrap;
+  }
+
+  #xt-offer-tabs .card-body {
+    padding: 16px !important;
+  }
+
+  #xt-provider-logo {
+    max-height: 50px !important;
+  }
+
+  #xt-offer-image {
+    margin-bottom: 14px;
+  }
+
+  #xt-offer-overview {
+    margin-bottom: 14px;
+  }
+
+  #xt-offer-overview > .row {
+    padding: 15px 9px !important;
+  }
+
+  #xt-offer-from-prices .btn {
+    min-height: 54px;
+  }
+
+  #xt-dates-and-prices {
+    border-radius: 18px !important;
+  }
+
+  #xt-dates-and-prices > .card-header {
+    padding: 15px 16px !important;
+  }
+
+  #xt-dates-and-prices > .card-body {
+    padding: 14px !important;
+  }
+
+  #xt-offer-main [data-offerfilter-target="offer"] {
+    border-radius: 14px !important;
+  }
+
+  #xt-offer-main .xt-offer-vacancy {
+    padding: 14px !important;
+  }
+
+  #xt-offer-main .xt-offer-vacancy > .row > .col-lg-3 {
+    margin-top: 14px;
+    text-align: left !important;
+  }
+
+  #xt-offer-main [data-action="vacancy#check"] {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   CORE CRUISES PATCH v1.4
+   - cleaner booking progress / breadcrumb
+   - vacancy result after "Angebot prüfen"
+   - cabin booking step ("Ihre Kreuzfahrt")
+   - stronger booking-flow fallbacks
+   ============================================================ */
+
+
+/* ============================================================
+   46. BOOKING PROGRESS – CLEAN STEPPER
+   ============================================================ */
+
+#xt-breadcrumb {
+  display: flex !important;
+  gap: 8px !important;
+  margin: 0 0 14px !important;
+  padding: 8px !important;
+  border: 1px solid var(--cc-line);
+  border-radius: 16px;
+  background: rgba(255,255,255,.92) !important;
+  box-shadow: var(--cc-shadow-sm);
+}
+
+#xt-breadcrumb.btn-group > .btn,
+#xt-breadcrumb .btn {
+  position: relative !important;
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  min-height: 48px !important;
+  margin: 0 !important;
+  padding: .72rem .8rem !important;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 11px !important;
+  background: #fff !important;
+  color: var(--cc-muted) !important;
+  font-weight: 850 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  overflow: hidden !important;
+}
+
+#xt-breadcrumb.btn-group > .btn::before,
+#xt-breadcrumb.btn-group > .btn::after,
+#xt-breadcrumb .btn::before,
+#xt-breadcrumb .btn::after {
+  display: none !important;
+  content: none !important;
+  border: 0 !important;
+}
+
+#xt-breadcrumb .btn.btn-primary {
+  border-color: var(--cc-navy) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+#xt-breadcrumb .btn.btn-primary:not(:has(~ .btn.btn-primary)) {
+  border-color: var(--cc-gold) !important;
+  background: var(--cc-gold) !important;
+  color: var(--cc-navy) !important;
+}
+
+#xt-breadcrumb .btn.btn-light.disabled,
+#xt-breadcrumb .btn:disabled {
+  border-color: #e2eaee !important;
+  background: #f1f5f7 !important;
+  color: #93a0aa !important;
+  opacity: 1 !important;
+}
+
+#xt-breadcrumb .btn:hover:not(:disabled) {
+  transform: none !important;
+}
+
+@media (max-width: 767.98px) {
+  #xt-breadcrumb {
+    display: none !important;
+  }
+}
+
+
+/* ============================================================
+   47. OFFER TABS – CLEANER TOP NAVIGATION
+   ============================================================ */
+
+.card:has(#xt-offer-tabs) > .card-header {
+  padding: 10px 14px 0 !important;
+  background: #fff !important;
+}
+
+.nav-tabs.card-header-tabs {
+  gap: 4px !important;
+  align-items: end;
+}
+
+.nav-tabs.card-header-tabs .nav-link {
+  padding: .72rem 1rem !important;
+  border: 0 !important;
+  border-bottom: 3px solid transparent !important;
+  border-radius: 10px 10px 0 0 !important;
+  background: transparent !important;
+  color: var(--cc-muted) !important;
+  font-weight: 850 !important;
+}
+
+.nav-tabs.card-header-tabs .nav-link:hover {
+  border-bottom-color: rgba(63,169,174,.45) !important;
+  background: rgba(63,169,174,.06) !important;
+  color: var(--cc-navy) !important;
+}
+
+.nav-tabs.card-header-tabs .nav-link.active {
+  border-bottom-color: var(--cc-gold) !important;
+  background: var(--cc-navy) !important;
+  color: #fff !important;
+}
+
+
+/* ============================================================
+   48. VACANCY CHECK – RESULT AFTER "ANGEBOT PRÜFEN"
+   ============================================================ */
+
+/* Neutralise Bootstrap's huge green blocks if XML Team adds them dynamically */
+#xt-offer-main .xt-offer-vacancy.bg-success,
+#xt-offer-main .xt-offer-vacancy.bg-success-subtle,
+#xt-offer-main .xt-offer-vacancy.text-bg-success,
+#xt-offer-main .xt-offer-vacancy.alert-success {
+  border: 1px solid rgba(33,138,103,.24) !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+}
+
+/* Same for dynamically inserted wrappers inside the vacancy card */
+#xt-offer-main .xt-offer-vacancy .bg-success-subtle:not(.alert),
+#xt-offer-main .xt-offer-vacancy .text-bg-success:not(.alert) {
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+}
+
+#xt-offer-main .xt-offer-vacancy .alert-success,
+#xt-offer-main .xt-offer-vacancy-message.alert-success,
+#xt-offer-main .xt-offer-vacancy-message:not(:empty) {
+  margin: 0 0 16px !important;
+  padding: 13px 15px !important;
+  border: 1px solid rgba(33,138,103,.28) !important;
+  border-radius: 12px !important;
+  background: rgba(33,138,103,.08) !important;
+  color: #17684f !important;
+  font-weight: 850 !important;
+  box-shadow: none !important;
+}
+
+#xt-offer-main .xt-offer-vacancy .text-success {
+  color: #218A67 !important;
+}
+
+#xt-offer-main .xt-offer-vacancy table {
+  width: 100%;
+  margin: 14px 0 !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--cc-line);
+  border-radius: 12px;
+  background: #fbfdfe;
+}
+
+#xt-offer-main .xt-offer-vacancy table td,
+#xt-offer-main .xt-offer-vacancy table th {
+  padding: .62rem .75rem !important;
+  border-bottom: 1px solid var(--cc-line) !important;
+  background: transparent !important;
+  color: var(--cc-navy) !important;
+}
+
+#xt-offer-main .xt-offer-vacancy table tr:last-child td,
+#xt-offer-main .xt-offer-vacancy table tr:last-child th {
+  border-bottom: 0 !important;
+}
+
+#xt-offer-main .xt-offer-vacancy table tr:last-child {
+  font-weight: 900;
+}
+
+#xt-offer-main .xt-offer-vacancy .btn-primary,
+#xt-offer-main .xt-offer-vacancy a.btn-primary,
+#xt-offer-main .xt-offer-vacancy button.btn-primary {
+  border: 1px solid var(--cc-gold) !important;
+  background: var(--cc-gold) !important;
+  background-image: none !important;
+  color: var(--cc-navy) !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+  box-shadow: 0 7px 18px rgba(10,26,47,.12) !important;
+}
+
+#xt-offer-main .xt-offer-vacancy .btn-primary:hover,
+#xt-offer-main .xt-offer-vacancy a.btn-primary:hover,
+#xt-offer-main .xt-offer-vacancy button.btn-primary:hover {
+  border-color: var(--cc-gold-dark) !important;
+  background: var(--cc-gold-dark) !important;
+  color: var(--cc-navy) !important;
+}
+
+#xt-offer-main .xt-offer-vacancy .btn-secondary {
+  border: 1px solid var(--cc-line) !important;
+  background: #fff !important;
+  background-image: none !important;
+  color: var(--cc-navy) !important;
+}
+
+
+/* ============================================================
+   49. CABIN BOOKING PAGE – "IHRE KREUZFAHRT"
+   Scoped via the known continue button.
+   ============================================================ */
+
+body:has(.xtc-cabins-continue-button) {
+  background: var(--cc-bg) !important;
+}
+
+body:has(.xtc-cabins-continue-button) .container-xxl {
+  padding-top: 12px;
+  padding-bottom: 28px;
+}
+
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) {
+  overflow: hidden;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 20px !important;
+  background: #fff !important;
+  box-shadow: var(--cc-shadow-sm) !important;
+}
+
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .card-header {
+  padding: 18px 22px !important;
+  border: 0 !important;
+  background:
+    linear-gradient(135deg, var(--cc-navy) 0%, #154257 58%, #1c6b73 100%) !important;
+  color: #fff !important;
+  font-size: 1.25rem;
+  font-weight: 900 !important;
+  letter-spacing: -.02em;
+}
+
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .card-body {
+  padding: 24px !important;
+}
+
+body:has(.xtc-cabins-continue-button) .col-form-label {
+  color: var(--cc-navy) !important;
+  font-weight: 800 !important;
+}
+
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) .form-select,
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) .bss.dropdown > .form-select {
+  min-height: 50px;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+  box-shadow: none !important;
+}
+
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) .form-select:focus,
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) .bss.dropdown > .form-select:focus {
+  border-color: var(--cc-petrol) !important;
+  box-shadow: 0 0 0 4px rgba(63,169,174,.13) !important;
+}
+
+body:has(.xtc-cabins-continue-button) [data-bs-target="#xt-cabin-details"] {
+  padding: .45rem 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--cc-petrol-dark) !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+body:has(.xtc-cabins-continue-button) [data-bs-target="#xt-cabin-details"] .svg-inline--fa {
+  color: var(--cc-petrol) !important;
+}
+
+body:has(.xtc-cabins-continue-button) #xt-cabin-details {
+  margin: 0 24px 22px;
+  border: 1px solid var(--cc-line);
+  border-radius: 14px;
+  background: #f8fbfc;
+}
+
+body:has(.xtc-cabins-continue-button) #xt-cabin-details .card-body {
+  padding: 18px 20px !important;
+}
+
+body:has(.xtc-cabins-continue-button) #xt-cabin-details ul {
+  padding-left: 1.2rem;
+  color: var(--cc-navy);
+}
+
+body:has(.xtc-cabins-continue-button) #xt-cabin-details li {
+  margin-bottom: .35rem;
+}
+
+body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .card-footer {
+  padding: 16px 22px !important;
+  border-top: 1px solid var(--cc-line) !important;
+  background: #fbfdfe !important;
+}
+
+.xtc-cabins-back-button {
+  min-height: 46px;
+  padding: .7rem 1rem !important;
+  border: 1px solid var(--cc-line) !important;
+  border-radius: 11px !important;
+  background: #fff !important;
+  background-image: none !important;
+  color: var(--cc-navy) !important;
+  font-weight: 850 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.xtc-cabins-back-button:hover {
+  border-color: var(--cc-petrol) !important;
+  background: rgba(63,169,174,.07) !important;
+  color: var(--cc-navy) !important;
+}
+
+.xtc-cabins-continue-button {
+  min-width: 120px;
+  min-height: 46px;
+  padding: .7rem 1.15rem !important;
+  border: 1px solid var(--cc-gold) !important;
+  border-radius: 11px !important;
+  background: var(--cc-gold) !important;
+  background-image: none !important;
+  color: var(--cc-navy) !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+  box-shadow: 0 7px 18px rgba(10,26,47,.12) !important;
+}
+
+.xtc-cabins-continue-button:hover {
+  border-color: var(--cc-gold-dark) !important;
+  background: var(--cc-gold-dark) !important;
+  color: var(--cc-navy) !important;
+}
+
+
+/* ============================================================
+   50. BOOKING FLOW FALLBACKS
+   Applies modern Core Cruises styling to later form steps too,
+   without touching the search/results page.
+   ============================================================ */
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card {
+  border-color: var(--cc-line);
+}
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-header {
+  color: var(--cc-navy);
+  font-weight: 850;
+}
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .form-control,
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .form-select {
+  border-color: var(--cc-line) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: var(--cc-navy) !important;
+}
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .btn-primary {
+  background-image: none !important;
+  text-shadow: none !important;
+}
+
+body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .btn-secondary {
+  background-image: none !important;
+  text-shadow: none !important;
+}
+
+
+/* ============================================================
+   51. MOBILE – CABIN STEP
+   ============================================================ */
+
+@media (max-width: 767.98px) {
+  body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) {
+    border-radius: 16px !important;
+  }
+
+  body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .card-header {
+    padding: 15px 16px !important;
+  }
+
+  body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .card-body {
+    padding: 16px !important;
+  }
+
+  body:has(.xtc-cabins-continue-button) #xt-cabin-details {
+    margin: 0 16px 16px;
+  }
+
+  body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .card-footer {
+    padding: 14px 16px !important;
+  }
+
+  body:has(.xtc-cabins-continue-button) .card-footer .row {
+    gap: 10px;
+  }
+
+  .xtc-cabins-back-button,
+  .xtc-cabins-continue-button {
+    width: 100%;
+  }
+
+  body:has(.xtc-cabins-continue-button) .card-footer .col,
+  body:has(.xtc-cabins-continue-button) .card-footer .col-auto {
+    flex: 1 1 100%;
+    width: 100%;
+    text-align: stretch !important;
+  }
+}
+
+/* ============================================================
+   CORE CRUISES PATCH v1.5
+   - "Preise aktualisieren" now uses gold CTA styling
+   - removes pale/greenish text effects from offer section headers
+   - cleans text shadows in booking flow
+   ============================================================ */
+
+/* Preise aktualisieren: Gold statt Petrol */
+.xtc-offer-update-button {
+  min-height: 46px !important;
+  border: 1px solid var(--cc-gold) !important;
+  border-radius: 11px !important;
+  background: var(--cc-gold) !important;
+  background-image: none !important;
+  color: var(--cc-navy) !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+  box-shadow: 0 7px 18px rgba(10, 26, 47, .12) !important;
+}
+
+.xtc-offer-update-button:hover,
+.xtc-offer-update-button:focus {
+  border-color: var(--cc-gold-dark) !important;
+  background: var(--cc-gold-dark) !important;
+  background-image: none !important;
+  color: var(--cc-navy) !important;
+  text-shadow: none !important;
+  box-shadow: 0 9px 22px rgba(10, 26, 47, .15) !important;
+}
+
+/* Kategorieüberschrift wie "Außenkabinen für 2 Erwachsene":
+   klares Weiß ohne alten Bootstrap/XML-Team-Schatten */
+#xt-offer-main [data-offerfilter-target="header"],
+#xt-offer-main [data-offerfilter-target="header"] .card-header {
+  background: var(--cc-navy) !important;
+  background-image: none !important;
+}
+
+#xt-offer-main [data-offerfilter-target="header"] .card-header {
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  font-weight: 900 !important;
+}
+
+/* Generell alte Textschatten in Angebots- und Buchungsstrecke entfernen */
+#xt-dates-and-prices,
+#xt-dates-and-prices *,
+#xt-offer-tabs,
+#xt-offer-tabs *,
+body:has(.xtc-cabins-continue-button) .card,
+body:has(.xtc-cabins-continue-button) .card * {
+  text-shadow: none !important;
+}
+
+/* Petrol-Icons bleiben als Akzent, Texte jedoch klar Navy */
+#xt-offer-main .xt-offer-vacancy,
+#xt-offer-main .xt-offer-vacancy li,
+#xt-offer-main .xt-offer-vacancy p,
+#xt-offer-main .xt-offer-vacancy span:not(.fa-li):not(.badge) {
+  color: var(--cc-navy);
+}
+
+/* Promo-Badges weiter Gold/Navy */
+#xt-offer-main .xt-offer-promo-description,
+#xt-offer-main .xt-offer-promo-description .xt-promo-description {
+  color: var(--cc-navy) !important;
+}
+
+#xt-offer-main .xt-offer-promo-description .xt-promo-description {
+  background: rgba(237, 195, 97, .28) !important;
+}
