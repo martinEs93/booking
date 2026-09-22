@@ -2290,3 +2290,58 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
     width: 100%;
   }
 }
+
+/* ============================================================
+   CORE CRUISES PATCH v1.7
+   - fixes datepicker stacking order on desktop
+   - calendar now sits above result cards instead of behind them
+   ============================================================ */
+
+/*
+ * The calendar itself was no longer clipped, but the entire search
+ * sidebar still lived in a lower stacking context than the result
+ * cards. Raise the sidebar above the main result column.
+ */
+@media (min-width: 992px) {
+  #xt-page-search > aside {
+    position: sticky !important;
+    top: 18px !important;
+    z-index: 5000 !important;
+    isolation: isolate;
+  }
+
+  #xt-search-main {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  #xt-cruisefinder-collapse,
+  #xt-cruisefinder-top,
+  #xt-cruisefinder-extended,
+  .xtc-search-cruisefinder {
+    position: relative;
+    z-index: 5001 !important;
+    overflow: visible !important;
+  }
+}
+
+/* Common Easepick / datepicker wrapper names */
+.easepick-wrapper,
+.datepicker,
+.ui-datepicker,
+[class*="easepick"],
+[class*="datepicker"] {
+  z-index: 20000 !important;
+}
+
+/*
+ * Result cards must never establish a higher layer than the open
+ * calendar. Keep their normal visual hierarchy below the sidebar.
+ */
+#xt-search-result,
+#xt-search-result > .list-group-item,
+#xt-search-summary,
+#xt-search-criteria {
+  position: relative;
+  z-index: 1 !important;
+}
