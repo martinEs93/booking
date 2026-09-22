@@ -2431,3 +2431,58 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
     margin-bottom: 1rem !important;
   }
 }
+
+/* ============================================================
+   CORE CRUISES PATCH v1.10
+   - datepicker/calendar now renders above "Erweiterte Suche"
+   - keeps the improved natural scrolling from v1.9
+   ============================================================ */
+
+/*
+ * The calendar lives inside #xt-cruisefinder-top, while
+ * #xt-cruisefinder-extended is its following sibling.
+ *
+ * Both had their own stacking contexts. Because the extended-search
+ * card comes later in the DOM, it could still paint over the calendar
+ * even though the Easepick wrapper itself had a very high z-index.
+ *
+ * Fix: lift the ENTIRE top search block above the extended-search block.
+ */
+#xt-cruisefinder-top {
+  position: relative !important;
+  z-index: 12000 !important;
+  overflow: visible !important;
+}
+
+#xt-cruisefinder-extended {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* The date-field column and its Easepick host must stay above everything below */
+#xt-cruisefinder-top .col:has(> #sdt) {
+  position: relative !important;
+  z-index: 13000 !important;
+}
+
+#xt-cruisefinder-top .col:has(> #sdt) > .easepick-wrapper {
+  position: absolute !important;
+  z-index: 30000 !important;
+}
+
+/* Keep other search UI from creating an accidental competing layer */
+#xt-cruisefinder-collapse {
+  position: relative !important;
+  z-index: 11000 !important;
+  overflow: visible !important;
+}
+
+/* Results always stay behind the open search/date UI */
+#xt-search-main,
+#xt-search-summary,
+#xt-search-criteria,
+#xt-search-result,
+#xt-search-result > .list-group-item {
+  position: relative !important;
+  z-index: 1 !important;
+}
