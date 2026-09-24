@@ -1,6 +1,6 @@
 /*
  * Core Cruises × CruiseCompass datepicker
- * Easepick-compatible theme v1.0
+ * Easepick-compatible theme v1.12 | Blau / Gold / Figtree
  *
  * This file is intended for the CruiseCompass "Datepicker Stylesheet URL" field.
  */
@@ -11,32 +11,32 @@
   --color-bg-secondary: #F4F7F9;
   --color-fg-default: #0A1A2F;
   --color-fg-primary: #0A1A2F;
-  --color-fg-secondary: #647383;
+  --color-fg-secondary: #53677A;
   --color-fg-muted: #8A99A7;
-  --color-fg-accent: #3FA9AE;
+  --color-fg-accent: #003366;
 
-  --color-btn-primary-bg: #EDC361;
+  --color-btn-primary-bg: #D4AF37;
   --color-btn-primary-fg: #0A1A2F;
-  --color-btn-primary-border: #EDC361;
-  --color-btn-primary-hover-bg: #D7A93E;
+  --color-btn-primary-border: #D4AF37;
+  --color-btn-primary-hover-bg: #E5C665;
   --color-btn-primary-hover-fg: #0A1A2F;
-  --color-btn-primary-hover-border: #D7A93E;
+  --color-btn-primary-hover-border: #E5C665;
 
   --color-btn-secondary-bg: #FFFFFF;
   --color-btn-secondary-fg: #0A1A2F;
-  --color-btn-secondary-border: #D9E5EA;
-  --color-btn-secondary-hover-bg: #EEF4F6;
+  --color-btn-secondary-border: #D9E3EA;
+  --color-btn-secondary-hover-bg: #F4F7F9;
   --color-btn-secondary-hover-fg: #0A1A2F;
-  --color-btn-secondary-hover-border: #3FA9AE;
+  --color-btn-secondary-hover-border: #003366;
 
-  --color-border: #D9E5EA;
+  --color-border: #D9E3EA;
   --color-shadow: rgba(10, 26, 47, .15);
 
-  --color-range-bg: rgba(63, 169, 174, .14);
-  --color-range-border: #3FA9AE;
+  --color-range-bg: rgba(0, 51, 102, .14);
+  --color-range-border: #003366;
   --color-range-fg: #0A1A2F;
-  --color-range-hover-bg: rgba(63, 169, 174, .22);
-  --color-range-hover-border: #26868B;
+  --color-range-hover-bg: rgba(0, 51, 102, .22);
+  --color-range-hover-border: #003366;
   --color-range-hover-fg: #0A1A2F;
 
   --color-range-start-bg: #0A1A2F;
@@ -48,12 +48,12 @@
 }
 
 .container {
-  border: 1px solid #D9E5EA !important;
+  border: 1px solid #D9E3EA !important;
   border-radius: 16px !important;
   background: #FFFFFF !important;
   color: #0A1A2F !important;
   box-shadow: 0 18px 50px rgba(10, 26, 47, .16) !important;
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-family: Figtree, "Segoe UI", system-ui, -apple-system, sans-serif !important;
 }
 
 .calendar {
@@ -69,7 +69,7 @@
 .month-name span,
 .weekday {
   color: #0A1A2F !important;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
 }
 
 .day {
@@ -79,12 +79,12 @@
 }
 
 .day:hover {
-  background: rgba(63, 169, 174, .12) !important;
+  background: rgba(0, 51, 102, .12) !important;
   color: #0A1A2F !important;
 }
 
 .day.today {
-  box-shadow: inset 0 0 0 1px #3FA9AE !important;
+  box-shadow: inset 0 0 0 1px #003366 !important;
 }
 
 .day.selected,
@@ -95,7 +95,7 @@
 }
 
 .day.in-range {
-  background: rgba(63, 169, 174, .14) !important;
+  background: rgba(0, 51, 102, .14) !important;
   color: #0A1A2F !important;
 }
 
@@ -115,19 +115,19 @@ button,
 }
 
 .apply-button {
-  border-color: #EDC361 !important;
-  background: #EDC361 !important;
+  border-color: #D4AF37 !important;
+  background: #D4AF37 !important;
   color: #0A1A2F !important;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
 }
 
 .apply-button:hover {
-  border-color: #D7A93E !important;
-  background: #D7A93E !important;
+  border-color: #E5C665 !important;
+  background: #E5C665 !important;
 }
 
 .cancel-button {
-  border-color: #D9E5EA !important;
+  border-color: #D9E3EA !important;
   background: #FFFFFF !important;
   color: #0A1A2F !important;
 }
@@ -135,8 +135,8 @@ button,
 .previous-button:hover,
 .next-button:hover,
 .cancel-button:hover {
-  border-color: #3FA9AE !important;
-  background: rgba(63, 169, 174, .08) !important;
+  border-color: #003366 !important;
+  background: rgba(0, 51, 102, .08) !important;
 }
 
 @media (max-width: 600px) {
@@ -148,3 +148,21 @@ button,
     padding: 8px !important;
   }
 }
+
+/* Designabgleich. Keine Positions-, Groessen- oder Ereignisregeln. */
+:host, .container {
+  --color-range-bg: #F7F0DD;
+  --color-range-fg: #0A1A2F;
+  --color-range-hover-bg: #F3E2AE;
+}
+.container { font-family: Figtree, "Segoe UI", system-ui, -apple-system, sans-serif !important; line-height:1.5; }
+.container .header, .month-name, .weekday { text-shadow:none !important; }
+.month-name, .month-name span { font-weight:700 !important; }
+.weekday { color:#53677A !important; font-weight:500 !important; }
+.day { font-weight:500; }
+.day.in-range { background:#F7F0DD !important; color:#0A1A2F !important; }
+.day.selected, .day.start, .day.end { background:#0A1A2F !important; color:#FFFFFF !important; font-weight:700; }
+.day:not(.disabled):not(.not-available):not(.selected):not(.start):not(.end):hover { background:#F7F0DD !important; color:#0A1A2F !important; }
+.day.today { box-shadow:inset 0 0 0 1px #D4AF37 !important; }
+.apply-button { font-weight:750 !important; text-shadow:none !important; }
+button:focus-visible, .day:focus-visible { outline:2px solid #003366; outline-offset:2px; }
