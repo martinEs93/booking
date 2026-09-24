@@ -1,11 +1,30 @@
+/* Core Cruises IBE v1.12 – Blau / Gold / Figtree
+ * Vollstaendiger Ersatz fuer corecruises-ibe-v1.11.css.
+ * Referenz: corecruises-startseiten-suche.css v1.0.0.
+ * Suchparameter, HTML, JavaScript und Kalenderpositionierung bleiben unberuehrt.
+ * Vorhandene Font-URLs der Hauptseite; keine Schriftdateien im Paket.
+ */
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-840fe6b5f16e157b3267724235a30130.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-638eb5d3bd63be37de3e171851715851.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-840fe6b5f16e157b3267724235a30130.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-638eb5d3bd63be37de3e171851715851.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-840fe6b5f16e157b3267724235a30130.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-638eb5d3bd63be37de3e171851715851.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-840fe6b5f16e157b3267724235a30130.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-638eb5d3bd63be37de3e171851715851.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-840fe6b5f16e157b3267724235a30130.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-638eb5d3bd63be37de3e171851715851.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-840fe6b5f16e157b3267724235a30130.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:800;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Figtree;src:url(https://www.corecruises.de/assets/fonts/Figtree-638eb5d3bd63be37de3e171851715851.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format('woff2');font-weight:800;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /*
  * Core Cruises × CruiseCompass IBE
- * Theme v1.0
+ * Theme v1.12 | Farb- und Typografieabgleich zur Startseiten-Suche
  *
  * Brand palette
  * Navy:       #0A1A2F
- * Petrol:     #3FA9AE
- * Gold:       #EDC361
+ * Blau:       #003366
+ * Gold:       #D4AF37
  * Background: #F4F7F9
  * White:      #FFFFFF
  *
@@ -14,18 +33,24 @@
  */
 
 :root {
+  --cc-font: Figtree, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --cc-blue: #003366;
+  --cc-gold-hover: #E5C665;
+  --cc-selection: #F7F0DD;
+  --bs-font-sans-serif: var(--cc-font);
+  --bs-body-font-family: var(--cc-font);
   --cc-navy: #0A1A2F;
-  --cc-navy-2: #123C53;
-  --cc-petrol: #3FA9AE;
-  --cc-petrol-dark: #26868B;
-  --cc-gold: #EDC361;
-  --cc-gold-dark: #D7A93E;
+  --cc-navy-2: #003366;
+  --cc-petrol: #003366;
+  --cc-petrol-dark: #003366;
+  --cc-gold: #D4AF37;
+  --cc-gold-dark: #E5C665;
   --cc-bg: #F4F7F9;
   --cc-surface: #FFFFFF;
-  --cc-soft: #EEF4F6;
-  --cc-line: #D9E5EA;
+  --cc-soft: #F4F7F9;
+  --cc-line: #D9E3EA;
   --cc-text: #0A1A2F;
-  --cc-muted: #647383;
+  --cc-muted: #53677A;
   --cc-success: #218A67;
   --cc-shadow-sm: 0 6px 20px rgba(10, 26, 47, .07);
   --cc-shadow-md: 0 14px 38px rgba(10, 26, 47, .11);
@@ -35,15 +60,15 @@
 
   --bs-primary: #0A1A2F;
   --bs-primary-rgb: 10, 26, 47;
-  --bs-secondary: #3FA9AE;
-  --bs-secondary-rgb: 63, 169, 174;
-  --bs-warning: #EDC361;
-  --bs-warning-rgb: 237, 195, 97;
+  --bs-secondary: #003366;
+  --bs-secondary-rgb: 0, 51, 102;
+  --bs-warning: #D4AF37;
+  --bs-warning-rgb: 212, 175, 55;
   --bs-light: #F4F7F9;
   --bs-light-rgb: 244, 247, 249;
   --bs-body-color: #0A1A2F;
   --bs-body-bg: #F4F7F9;
-  --bs-border-color: #D9E5EA;
+  --bs-border-color: #D9E3EA;
 }
 
 html {
@@ -53,7 +78,7 @@ html {
 body {
   background: var(--cc-bg) !important;
   color: var(--cc-text) !important;
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Figtree, "Segoe UI", system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -90,7 +115,7 @@ a:hover {
 .form-control:hover,
 .form-select:hover,
 .bss.dropdown > .form-select:hover {
-  border-color: rgba(63, 169, 174, .65) !important;
+  border-color: rgba(0, 51, 102, .65) !important;
 }
 
 .form-control:focus,
@@ -98,7 +123,7 @@ a:hover {
 .bss.dropdown > .form-select:focus,
 .bss.dropdown > .form-select.show {
   border-color: var(--cc-petrol) !important;
-  box-shadow: 0 0 0 4px rgba(63, 169, 174, .14) !important;
+  box-shadow: 0 0 0 4px rgba(0, 51, 102, .14) !important;
 }
 
 .dropdown-menu {
@@ -118,7 +143,7 @@ a:hover {
 .dropdown-item:hover,
 .dropdown-item:focus,
 .dropdown-item.selected {
-  background: rgba(63, 169, 174, .11) !important;
+  background: rgba(0, 51, 102, .11) !important;
   color: var(--cc-navy) !important;
 }
 
@@ -142,7 +167,7 @@ a:hover {
 
 .btn:focus-visible {
   outline: none !important;
-  box-shadow: 0 0 0 4px rgba(63, 169, 174, .18) !important;
+  box-shadow: 0 0 0 4px rgba(0, 51, 102, .18) !important;
 }
 
 /* ---------- Overall search layout ---------- */
@@ -173,7 +198,7 @@ a:hover {
     overflow-y: auto;
     overflow-x: visible;
     scrollbar-width: thin;
-    scrollbar-color: rgba(63, 169, 174, .45) transparent;
+    scrollbar-color: rgba(0, 51, 102, .45) transparent;
   }
 
   #xt-page-search > aside::-webkit-scrollbar {
@@ -181,7 +206,7 @@ a:hover {
   }
 
   #xt-page-search > aside::-webkit-scrollbar-thumb {
-    background: rgba(63, 169, 174, .45);
+    background: rgba(0, 51, 102, .45);
     border-radius: 999px;
   }
 }
@@ -198,10 +223,7 @@ a:hover {
   padding: 24px !important;
   border-radius: var(--cc-radius-lg) !important;
   color: #fff !important;
-  background:
-    radial-gradient(circle at 90% 7%, rgba(237, 195, 97, .24), transparent 24%),
-    radial-gradient(circle at 82% 22%, rgba(63, 169, 174, .27), transparent 34%),
-    linear-gradient(138deg, var(--cc-navy) 0%, var(--cc-navy-2) 58%, #17616d 100%) !important;
+  background: radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #0A1A2F, #003366) !important;
   box-shadow: var(--cc-shadow-md);
 }
 
@@ -212,7 +234,7 @@ a:hover {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background: rgba(63, 169, 174, .12);
+  background: rgba(0, 51, 102, .12);
   pointer-events: none;
 }
 
@@ -221,7 +243,7 @@ a:hover {
   padding: 0 !important;
   color: #fff !important;
   font-size: clamp(1.45rem, 2vw, 2rem) !important;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -.035em;
 }
 
@@ -243,7 +265,7 @@ a:hover {
   background: var(--cc-gold) !important;
   color: var(--cc-navy) !important;
   font-size: 1rem;
-  font-weight: 850;
+  font-weight: 750;
   box-shadow: 0 8px 20px rgba(10, 26, 47, .16) !important;
 }
 
@@ -271,7 +293,7 @@ a:hover {
   padding: 0 !important;
   color: var(--cc-navy);
   font-size: 1.35rem !important;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -.025em;
 }
 
@@ -289,8 +311,8 @@ a:hover {
 
 .xtc-search-cruisefinder-collapse:hover,
 .xtc-search-cruisefinder-collapse[aria-expanded="true"] {
-  border-color: rgba(63, 169, 174, .62) !important;
-  background: rgba(63, 169, 174, .08) !important;
+  border-color: rgba(0, 51, 102, .62) !important;
+  background: rgba(0, 51, 102, .08) !important;
   color: var(--cc-navy) !important;
 }
 
@@ -343,9 +365,9 @@ a:hover {
 #xt-search-criteria .btn {
   margin-right: .35rem;
   padding: .48rem .72rem;
-  border: 1px solid rgba(63, 169, 174, .22) !important;
+  border: 1px solid rgba(0, 51, 102, .22) !important;
   border-radius: 999px !important;
-  background: rgba(63, 169, 174, .10) !important;
+  background: rgba(0, 51, 102, .10) !important;
   color: var(--cc-navy) !important;
   opacity: 1 !important;
   font-size: .84rem;
@@ -373,7 +395,7 @@ a:hover {
 
 .pagination .page-link:hover {
   border-color: var(--cc-petrol) !important;
-  background: rgba(63, 169, 174, .08) !important;
+  background: rgba(0, 51, 102, .08) !important;
 }
 
 .pagination .page-item.active .page-link {
@@ -405,7 +427,7 @@ a:hover {
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden;
-  border: 1px solid rgba(217, 229, 234, .95) !important;
+  border: 1px solid rgba(217, 227, 234, .95) !important;
   border-radius: var(--cc-radius-lg) !important;
   background: #fff !important;
   color: var(--cc-text);
@@ -415,7 +437,7 @@ a:hover {
 
 #xt-search-result > .list-group-item:hover {
   transform: translateY(-2px);
-  border-color: rgba(63, 169, 174, .45) !important;
+  border-color: rgba(0, 51, 102, .45) !important;
   box-shadow: var(--cc-shadow-md);
 }
 
@@ -423,8 +445,8 @@ a:hover {
 #xt-search-result > .list-group-item > .row.border-bottom {
   margin: 0 !important;
   padding: 17px 20px 14px;
-  border-bottom: 1px solid #e8eff2 !important;
-  background: linear-gradient(180deg, #fff 0%, #fbfdfe 100%);
+  border-bottom: 1px solid #EDF1F5 !important;
+  background: linear-gradient(180deg, #fff 0%, #FBFCFE 100%);
 }
 
 #xt-search-result h3.h2 {
@@ -432,7 +454,7 @@ a:hover {
   color: var(--cc-navy);
   font-size: clamp(1.15rem, 1.6vw, 1.45rem) !important;
   line-height: 1.2;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -.025em;
 }
 
@@ -495,7 +517,7 @@ a:hover {
   padding: 3px 10px;
   background: var(--cc-gold) !important;
   color: var(--cc-navy) !important;
-  font-weight: 850;
+  font-weight: 750;
   text-align: center;
 }
 
@@ -503,7 +525,7 @@ a:hover {
   padding: 4px 10px 0;
   color: var(--cc-navy);
   font-size: 1.15rem;
-  font-weight: 850;
+  font-weight: 750;
   text-align: center;
 }
 
@@ -522,7 +544,7 @@ a:hover {
   border: 0 !important;
   background: var(--cc-gold) !important;
   color: var(--cc-navy) !important;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: .01em;
 }
 
@@ -538,7 +560,7 @@ a:hover {
   color: var(--cc-navy);
   font-size: clamp(1.75rem, 2.6vw, 2.35rem) !important;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -.045em;
 }
 
@@ -555,7 +577,7 @@ a:hover {
 #xt-search-result .mb-2.row > .col-xl-3.col-sm-6 > .fw-bold {
   color: var(--cc-navy);
   font-size: .88rem;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
 }
 
 #xt-search-result [data-offer-target="inside"],
@@ -574,8 +596,8 @@ a:hover {
   align-items: center;
   gap: 10px;
   padding: 12px 20px !important;
-  border-top: 1px solid #e8eff2;
-  background: #fbfdfe !important;
+  border-top: 1px solid #EDF1F5;
+  background: #FBFCFE !important;
   color: var(--cc-text) !important;
 }
 
@@ -590,7 +612,7 @@ a:hover {
 
 #xt-search-result .xtc-search-offer-collapse:hover {
   border-color: var(--cc-petrol) !important;
-  background: rgba(63, 169, 174, .07) !important;
+  background: rgba(0, 51, 102, .07) !important;
 }
 
 #xt-search-result .xtc-search-offer-button {
@@ -599,7 +621,7 @@ a:hover {
   border: 1px solid rgba(10, 26, 47, .07) !important;
   background: var(--cc-gold) !important;
   color: var(--cc-navy) !important;
-  font-weight: 900;
+  font-weight: 800;
   box-shadow: 0 7px 18px rgba(10, 26, 47, .13) !important;
 }
 
@@ -884,7 +906,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 #xt-search-result .xtc-search-offer-collapse.has-icon:hover {
   border-color: var(--cc-petrol) !important;
-  background: rgba(63, 169, 174, .07) !important;
+  background: rgba(0, 51, 102, .07) !important;
   color: var(--cc-navy) !important;
 }
 
@@ -925,7 +947,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   border-radius: 12px !important;
   background: var(--cc-gold) !important;
   color: var(--cc-navy) !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   line-height: 1.15 !important;
   overflow: visible !important;
   box-shadow: 0 7px 18px rgba(10, 26, 47, .13) !important;
@@ -1042,7 +1064,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 .card:has(#xt-offer-tabs) > .card-header {
   padding: 12px 14px 0 !important;
   border-bottom: 1px solid var(--cc-line) !important;
-  background: #fbfdfe !important;
+  background: #FBFCFE !important;
 }
 
 
@@ -1069,8 +1091,8 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 }
 
 .nav-tabs.card-header-tabs .nav-link:hover {
-  border-color: rgba(63,169,174,.25) !important;
-  background: rgba(63,169,174,.07) !important;
+  border-color: rgba(0, 51, 102,.25) !important;
+  background: rgba(0, 51, 102,.07) !important;
   color: var(--cc-navy) !important;
 }
 
@@ -1093,7 +1115,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   color: var(--cc-navy) !important;
   font-size: clamp(1.45rem, 2.2vw, 2.15rem) !important;
   line-height: 1.12 !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   letter-spacing: -.035em;
 }
 
@@ -1121,7 +1143,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   padding: 18px 12px !important;
   border: 1px solid var(--cc-line);
   border-radius: 16px;
-  background: linear-gradient(180deg, #fbfdfe 0%, #f6fafb 100%);
+  background: linear-gradient(180deg, #FBFCFE 0%, #F4F7F9 100%);
 }
 
 #xt-offer-overview .col-5.text-end {
@@ -1157,12 +1179,12 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 #xt-offer-from-prices .btn strong {
   color: var(--cc-navy);
   font-size: 1.16em;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 #xt-offer-from-prices .btn:hover {
   border-color: var(--cc-gold) !important;
-  background: rgba(237,195,97,.14) !important;
+  background: rgba(212, 175, 55,.14) !important;
   transform: translateY(-1px);
 }
 
@@ -1176,7 +1198,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 #xt-offer-tabs .h3,
 #xt-offer-tabs .h4 {
   color: var(--cc-navy) !important;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
   letter-spacing: -.02em;
 }
 
@@ -1192,9 +1214,9 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 #xt-offer-tabs .card-header {
   border-bottom: 1px solid var(--cc-line) !important;
-  background: #f7fafb !important;
+  background: #F8FAFC !important;
   color: var(--cc-navy) !important;
-  font-weight: 850;
+  font-weight: 750;
 }
 
 #xt-offer-tabs .list-group-item {
@@ -1203,7 +1225,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 }
 
 #xt-offer-tabs .list-group-item-action:hover {
-  background: rgba(63,169,174,.07) !important;
+  background: rgba(0, 51, 102,.07) !important;
 }
 
 #xt-offer-tabs .list-group-item.active {
@@ -1242,12 +1264,12 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 #xt-itinerary-tab .table tbody td {
   padding: .68rem .7rem;
-  border-color: #e6eef1 !important;
+  border-color: #D9E3EA !important;
   color: var(--cc-navy);
 }
 
 #xt-itinerary-tab .table-striped > tbody > tr:nth-of-type(odd) > * {
-  --bs-table-accent-bg: rgba(63,169,174,.055) !important;
+  --bs-table-accent-bg: rgba(0, 51, 102,.055) !important;
 }
 
 
@@ -1269,7 +1291,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   padding: 18px;
   border: 1px solid var(--cc-line);
   border-radius: 14px;
-  background: #fbfdfe;
+  background: #FBFCFE;
 }
 
 #xt-services-tab .fa-li .svg-inline--fa:not(.text-danger):not(.text-success) {
@@ -1298,14 +1320,14 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   padding: 18px 22px !important;
   border-bottom: 0 !important;
   background:
-    linear-gradient(135deg, var(--cc-navy) 0%, #154257 58%, #1c6b73 100%) !important;
+    radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #0A1A2F, #003366) !important;
   color: #fff !important;
 }
 
 #xt-dates-and-prices > .card-header h2 {
   color: #fff !important;
   font-size: clamp(1.35rem, 2vw, 1.75rem);
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -.03em;
 }
 
@@ -1337,7 +1359,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 }
 
 #xt-offer-filter .list-group-item:hover {
-  background: rgba(63,169,174,.07) !important;
+  background: rgba(0, 51, 102,.07) !important;
 }
 
 #xt-offer-filter .list-group-item.active {
@@ -1356,14 +1378,14 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 #xt-offer-filter .card-header {
   padding: .75rem .9rem;
   border-bottom: 1px solid var(--cc-line) !important;
-  background: #f7fafb !important;
+  background: #F8FAFC !important;
   color: var(--cc-navy) !important;
-  font-weight: 850;
+  font-weight: 750;
 }
 
 #xt-offer-filter .badge {
   border-radius: 999px !important;
-  background: rgba(63,169,174,.13) !important;
+  background: rgba(0, 51, 102,.13) !important;
   color: var(--cc-navy) !important;
   font-weight: 800;
 }
@@ -1378,7 +1400,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   border-radius: 11px !important;
   background: var(--cc-petrol-dark) !important;
   color: #fff !important;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
 }
 
 .xtc-offer-update-button:hover {
@@ -1404,7 +1426,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   border: 0 !important;
   background: rgba(10,26,47,.94) !important;
   color: #fff !important;
-  font-weight: 850;
+  font-weight: 750;
 }
 
 
@@ -1423,7 +1445,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 }
 
 #xt-offer-main [data-offerfilter-target="offer"]:hover {
-  border-color: rgba(63,169,174,.45) !important;
+  border-color: rgba(0, 51, 102,.45) !important;
   box-shadow: 0 10px 28px rgba(10,26,47,.09) !important;
   transform: translateY(-1px);
 }
@@ -1451,7 +1473,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   display: inline-block;
   padding: .22rem .55rem;
   border-radius: 999px;
-  background: rgba(237,195,97,.25);
+  background: rgba(212, 175, 55,.25);
   color: var(--cc-navy);
 }
 
@@ -1459,7 +1481,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   margin: 0 0 .7rem !important;
   color: var(--cc-navy) !important;
   font-size: 1.35rem;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   letter-spacing: -.025em;
 }
 
@@ -1470,7 +1492,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   border-radius: 11px !important;
   background: var(--cc-gold) !important;
   color: var(--cc-navy) !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   box-shadow: 0 6px 16px rgba(10,26,47,.11) !important;
 }
 
@@ -1484,9 +1506,9 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 #xt-offer-main .xt-offer-vacancy-message:not(:empty) {
   margin-bottom: 12px;
   padding: 10px 12px;
-  border: 1px solid rgba(63,169,174,.25);
+  border: 1px solid rgba(0, 51, 102,.25);
   border-radius: 10px;
-  background: rgba(63,169,174,.08);
+  background: rgba(0, 51, 102,.08);
   color: var(--cc-navy);
 }
 
@@ -1652,7 +1674,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   border-radius: 11px !important;
   background: #fff !important;
   color: var(--cc-muted) !important;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
   box-shadow: none !important;
   text-shadow: none !important;
   overflow: hidden !important;
@@ -1719,12 +1741,12 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   border-radius: 10px 10px 0 0 !important;
   background: transparent !important;
   color: var(--cc-muted) !important;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
 }
 
 .nav-tabs.card-header-tabs .nav-link:hover {
-  border-bottom-color: rgba(63,169,174,.45) !important;
-  background: rgba(63,169,174,.06) !important;
+  border-bottom-color: rgba(0, 51, 102,.45) !important;
+  background: rgba(0, 51, 102,.06) !important;
   color: var(--cc-navy) !important;
 }
 
@@ -1765,7 +1787,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   border-radius: 12px !important;
   background: rgba(33,138,103,.08) !important;
   color: #17684f !important;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
   box-shadow: none !important;
 }
 
@@ -1781,7 +1803,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   overflow: hidden;
   border: 1px solid var(--cc-line);
   border-radius: 12px;
-  background: #fbfdfe;
+  background: #FBFCFE;
 }
 
 #xt-offer-main .xt-offer-vacancy table td,
@@ -1798,7 +1820,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 }
 
 #xt-offer-main .xt-offer-vacancy table tr:last-child {
-  font-weight: 900;
+  font-weight: 800;
 }
 
 #xt-offer-main .xt-offer-vacancy .btn-primary,
@@ -1808,7 +1830,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   background: var(--cc-gold) !important;
   background-image: none !important;
   color: var(--cc-navy) !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   text-shadow: none !important;
   box-shadow: 0 7px 18px rgba(10,26,47,.12) !important;
 }
@@ -1855,10 +1877,10 @@ body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .
   padding: 18px 22px !important;
   border: 0 !important;
   background:
-    linear-gradient(135deg, var(--cc-navy) 0%, #154257 58%, #1c6b73 100%) !important;
+    radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #0A1A2F, #003366) !important;
   color: #fff !important;
   font-size: 1.25rem;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   letter-spacing: -.02em;
 }
 
@@ -1884,7 +1906,7 @@ body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) .bs
 body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) .form-select:focus,
 body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) .bss.dropdown > .form-select:focus {
   border-color: var(--cc-petrol) !important;
-  box-shadow: 0 0 0 4px rgba(63,169,174,.13) !important;
+  box-shadow: 0 0 0 4px rgba(0, 51, 102,.13) !important;
 }
 
 body:has(.xtc-cabins-continue-button) [data-bs-target="#xt-cabin-details"] {
@@ -1904,7 +1926,7 @@ body:has(.xtc-cabins-continue-button) #xt-cabin-details {
   margin: 0 24px 22px;
   border: 1px solid var(--cc-line);
   border-radius: 14px;
-  background: #f8fbfc;
+  background: #F8FAFC;
 }
 
 body:has(.xtc-cabins-continue-button) #xt-cabin-details .card-body {
@@ -1923,7 +1945,7 @@ body:has(.xtc-cabins-continue-button) #xt-cabin-details li {
 body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .card-footer {
   padding: 16px 22px !important;
   border-top: 1px solid var(--cc-line) !important;
-  background: #fbfdfe !important;
+  background: #FBFCFE !important;
 }
 
 .xtc-cabins-back-button {
@@ -1934,14 +1956,14 @@ body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .
   background: #fff !important;
   background-image: none !important;
   color: var(--cc-navy) !important;
-  font-weight: 850 !important;
+  font-weight: 750 !important;
   text-shadow: none !important;
   box-shadow: none !important;
 }
 
 .xtc-cabins-back-button:hover {
   border-color: var(--cc-petrol) !important;
-  background: rgba(63,169,174,.07) !important;
+  background: rgba(0, 51, 102,.07) !important;
   color: var(--cc-navy) !important;
 }
 
@@ -1954,7 +1976,7 @@ body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .
   background: var(--cc-gold) !important;
   background-image: none !important;
   color: var(--cc-navy) !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   text-shadow: none !important;
   box-shadow: 0 7px 18px rgba(10,26,47,.12) !important;
 }
@@ -1978,7 +2000,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card {
 
 body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-header {
   color: var(--cc-navy);
-  font-weight: 850;
+  font-weight: 750;
 }
 
 body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .form-control,
@@ -2057,7 +2079,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .btn-secondary {
   background: var(--cc-gold) !important;
   background-image: none !important;
   color: var(--cc-navy) !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   text-shadow: none !important;
   box-shadow: 0 7px 18px rgba(10, 26, 47, .12) !important;
 }
@@ -2084,7 +2106,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .btn-secondary {
   color: #FFFFFF !important;
   text-shadow: none !important;
   -webkit-text-stroke: 0 !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
 }
 
 /* Generell alte Textschatten in Angebots- und Buchungsstrecke entfernen */
@@ -2112,7 +2134,7 @@ body:has(.xtc-cabins-continue-button) .card * {
 }
 
 #xt-offer-main .xt-offer-promo-description .xt-promo-description {
-  background: rgba(237, 195, 97, .28) !important;
+  background: rgba(212, 175, 55, .28) !important;
 }
 
 /* ============================================================
@@ -2181,7 +2203,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search))
 
   color: var(--cc-navy) !important;
 
-  font-weight: 850 !important;
+  font-weight: 750 !important;
   text-shadow: none !important;
 
   box-shadow: none !important;
@@ -2193,13 +2215,13 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search))
 .btn-secondary:not(.xtc-offer-update-button):focus {
   border-color: var(--cc-petrol) !important;
 
-  background: rgba(63, 169, 174, .07) !important;
+  background: rgba(0, 51, 102, .07) !important;
   background-image: none !important;
 
   color: var(--cc-navy) !important;
 
   text-shadow: none !important;
-  box-shadow: 0 0 0 4px rgba(63, 169, 174, .11) !important;
+  box-shadow: 0 0 0 4px rgba(0, 51, 102, .11) !important;
 }
 
 
@@ -2217,7 +2239,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search))
 
   color: var(--cc-navy) !important;
 
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   text-shadow: none !important;
 
   box-shadow: 0 7px 18px rgba(10, 26, 47, .12) !important;
@@ -2262,7 +2284,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search))
 /* Footer/action rows on the final booking steps */
 body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer {
   border-top: 1px solid var(--cc-line) !important;
-  background: #FBFDFE !important;
+  background: #FBFCFE !important;
 }
 
 body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
@@ -2543,4 +2565,248 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .card-footer .btn {
 #xt-cruisefinder-top .col:has(> #sdt):not(:focus-within) > .easepick-wrapper {
   z-index: 1 !important;
   pointer-events: none !important;
+}
+
+
+/* ============================================================
+   v1.12 | EINE DESIGNSPRACHE MIT DER STARTSEITEN-SUCHE
+   Quelle: corecruises-startseiten-suche.css v1.0.0 (.ccq).
+   Dieser Abschnitt aendert nur Farben, Schriften und Oberflaechen.
+   Keine neuen Kalender-, Dropdown-, Positionierungs- oder JS-Regeln.
+   ============================================================ */
+
+body {
+  font-family: var(--cc-font) !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-shadow: none;
+}
+
+/* Explicit form typography: do not touch icon-font families or SVG paths. */
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(h1, h2, h3, h4, h5, h6, p, label, button, input, select, textarea,
+    .btn, .nav-link, .page-link, .dropdown-item, .form-control, .form-select) {
+  font-family: var(--cc-font) !important;
+  text-shadow: none !important;
+}
+
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.form-control, .form-select) {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  border-color: var(--cc-line) !important;
+  color: var(--cc-navy) !important;
+  background-color: #FFFFFF !important;
+}
+
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.form-label, .col-form-label) {
+  font-size: 13px;
+  font-weight: 700 !important;
+  letter-spacing: normal;
+}
+
+#xt-cruisefinder-top {
+  background: radial-gradient(ellipse at 95% 0%, rgba(63,169,174,.16), transparent 60%),
+              linear-gradient(115deg, #0A1A2F, #003366) !important;
+  box-shadow: 0 12px 32px rgba(10,26,47,.12);
+}
+#xt-cruisefinder-top .xtc-search-cruisefinder-title {
+  font-size: clamp(23px, 2.3vw, 29px) !important;
+  font-weight: 750;
+  line-height: 1.18;
+  letter-spacing: -.025em;
+}
+#xt-cruisefinder-top .form-label { color: #CDDEEA !important; }
+#xt-cruisefinder-extended {
+  background: #FFFFFF !important;
+  border-color: var(--cc-line);
+}
+#xt-cruisefinder-extended .xtc-search-cruisefinder-extended-title {
+  font-size: 21px !important;
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+
+/* White fields; gold hover/focus, matching the homepage triggers. */
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.form-control, .form-select):hover {
+  border-color: var(--cc-gold) !important;
+}
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.form-control, .form-select):focus,
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+.bss.dropdown > .form-select.show {
+  border-color: var(--cc-gold) !important;
+  box-shadow: 0 0 0 3px rgba(212,175,55,.22) !important;
+}
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.form-control, .form-select):disabled {
+  background-color: #F4F7F9 !important;
+  color: #6C8194 !important;
+}
+
+/* Popups retain their original opening/closing and layering rules. */
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices) .dropdown-menu {
+  border-color: var(--cc-line) !important;
+  border-radius: 17px !important;
+  box-shadow: 0 18px 52px rgba(10,26,47,.22) !important;
+}
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices) .dropdown-item {
+  font-size: 14px;
+  font-weight: 550;
+  line-height: 1.5;
+  color: var(--cc-navy) !important;
+}
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+.dropdown-item:is(:hover, :focus):not(.disabled):not(:disabled) {
+  background: #F3F6F9 !important;
+}
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+.dropdown-item:is(.selected, .active):not(.disabled):not(:disabled) {
+  background: #F7F0DD !important;
+  color: var(--cc-navy) !important;
+}
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+.dropdown-item:is(.disabled, :disabled) {
+  color: #7B8793 !important;
+}
+
+/* Uniform gold CTAs. Success/availability messages themselves stay semantic. */
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.btn-primary, .xtc-offer-update-button),
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+.bss .dropdown-menu .btn-success {
+  --bs-btn-bg: #D4AF37;
+  --bs-btn-border-color: #D4AF37;
+  --bs-btn-color: #0A1A2F;
+  --bs-btn-hover-bg: #E5C665;
+  --bs-btn-hover-border-color: #E5C665;
+  --bs-btn-hover-color: #0A1A2F;
+  --bs-btn-active-bg: #E5C665;
+  --bs-btn-active-color: #0A1A2F;
+  --bs-btn-disabled-bg: #D4AF37;
+  --bs-btn-disabled-color: #0A1A2F;
+  background: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+  color: #0A1A2F !important;
+  font-size: 15px;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal;
+  text-shadow: none !important;
+  box-shadow: 0 5px 14px rgba(0,0,0,.12) !important;
+}
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.btn-primary, .xtc-offer-update-button):is(:hover, :focus-visible):not(:disabled):not(.disabled),
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+.bss .dropdown-menu .btn-success:is(:hover, :focus-visible):not(:disabled):not(.disabled) {
+  background: #E5C665 !important;
+  border-color: #E5C665 !important;
+  color: #0A1A2F !important;
+  box-shadow: 0 7px 18px rgba(0,0,0,.18) !important;
+}
+
+/* Strong existing has-icon rules are retained; only visual properties change. */
+#xt-search-result .xtc-search-offer-button.has-icon,
+.xtc-search-cruisefinder-button, .xtc-search-cruisefinder-extended-button {
+  font-size: 15px;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal;
+  box-shadow: 0 5px 14px rgba(0,0,0,.12) !important;
+}
+#xt-search-result .xtc-search-offer-button.has-icon:hover,
+.xtc-search-cruisefinder-button:hover, .xtc-search-cruisefinder-extended-button:hover {
+  box-shadow: 0 7px 18px rgba(0,0,0,.18) !important;
+}
+#xt-search-result .xtc-search-offer-collapse.has-icon {
+  font-size: 15px;
+  font-weight: 650 !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal;
+}
+.xtc-search-cruisefinder-collapse { font-weight: 650; font-size: 15px; }
+.xtc-search-cruisefinder-collapse:is(:hover, [aria-expanded="true"]) {
+  background: #F7F0DD !important;
+  border-color: #D4AF37 !important;
+}
+.xtc-search-cruisefinder-collapse .svg-inline--fa { color: #003366; }
+
+/* A quieter type hierarchy in results, tabs and cabin selection. */
+#xt-search-summary p { font-size: 15px; font-weight: 650; letter-spacing: normal; }
+#xt-search-criteria .btn {
+  background: #F7F0DD !important;
+  border-color: rgba(212,175,55,.30) !important;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+#xt-search-result h3.h2 { font-weight: 750; line-height: 1.25; }
+#xt-search-result h3.h2 + p { color: #53677A; font-size: 14px; line-height: 1.5; }
+#xt-search-result [data-offer-target="price"] .h1 { font-weight: 750; letter-spacing: -.025em; }
+#xt-search-result .mb-2.row > .col-xl-3.col-sm-6 > .fw-bold {
+  font-size: 13px;
+  font-weight: 700 !important;
+}
+#xt-search-result :is([data-offer-target="inside"], [data-offer-target="outside"],
+ [data-offer-target="balcony"], [data-offer-target="suite"]) { font-size: 14px; }
+#xt-search-result [data-offer-target="promo"] {
+  background: #F7F0DD !important;
+  color: #0A1A2F !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+#xt-search-result .xt-date .xt-month { background: #F7F0DD !important; font-weight: 700; }
+#xt-search-result .xt-date .xt-day { font-weight: 750; }
+#xt-search-result .xt-date .xt-year { font-weight: 600; }
+#xt-overview-tab h1 { font-weight: 750 !important; line-height: 1.18 !important; }
+#xt-offer-tabs :is(h2,h3,.h3,.h4),
+#xt-dates-and-prices > .card-header h2 { font-weight: 750 !important; }
+#xt-offer-main [data-offerfilter-target="header"] .card-header {
+  background: #0A1A2F !important;
+  font-weight: 700 !important;
+  font-size: 16px;
+}
+#xt-offer-main [data-vacancy-target="price"] { font-weight: 750 !important; }
+#xt-offer-main .xt-offer-promo-description .xt-promo-description { background: #F7F0DD !important; }
+#xt-offer-filter :is(.list-group-item,.card-header) { font-size: 14px; font-weight: 600; }
+#xt-offer-filter .badge { background: #F7F0DD !important; }
+#xt-offer-tabs .nav-tabs.card-header-tabs .nav-link,
+.card:has(#xt-offer-tabs) > .card-header .nav-link { font-size: 14px; font-weight: 650 !important; }
+
+/* The stepper is navigation, not a series of gold booking buttons. */
+#xt-breadcrumb .btn {
+  font-family: var(--cc-font) !important;
+  font-size: 14px;
+  font-weight: 650 !important;
+  letter-spacing: normal;
+}
+#xt-breadcrumb .btn.btn-primary {
+  background: #0A1A2F !important;
+  border-color: #0A1A2F !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+#xt-breadcrumb .btn.btn-primary:not(:has(~ .btn.btn-primary)) {
+  background: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+  color: #0A1A2F !important;
+}
+
+/* Maintain important status colours: they are not branding accents. */
+#cc-ibe-inhalt :is(.text-danger,.text-success,.text-warning) .svg-inline--fa,
+#xt-page-search :is(.text-danger,.text-success,.text-warning) .svg-inline--fa {
+  color: inherit !important;
+}
+
+/* Keep keyboard focus visible without changing click handlers or disabled states. */
+:is(#cc-ibe-inhalt, #xt-page-search, #xt-offer-tabs, #xt-dates-and-prices)
+:is(.btn,.page-link,.nav-link):focus-visible {
+  outline: 3px solid #E5C665 !important;
+  outline-offset: 3px;
 }
