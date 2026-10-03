@@ -1,32 +1,23 @@
-/* Core Cruises | IBE shell v4.0
- * Only the added mobile navigation is addressed. The supplied logo loads directly.
- * No IBE selectors, form events, cookies, storage or network submissions.
+/* Core Cruises | IBE template integration | v5.0
+ * Header/mobile navigation is handled by the same corecruises-home.js
+ * used on www.corecruises.de.
+ *
+ * This file intentionally does not touch IBE selectors, forms, dates,
+ * booking events, cookies, localStorage, sessionStorage or network requests.
  */
 (() => {
   'use strict';
-  function initCoreCruisesShell() {
-    const menu = document.getElementById('cc-shell-mobile-menu');
-    if (!(menu instanceof HTMLDetailsElement)) return;
-    const summary = menu.querySelector('summary');
-    menu.addEventListener('click', (event) => {
-      if (event.target instanceof Element && event.target.closest('a')) menu.open = false;
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && menu.open) {
-        menu.open = false;
-        summary?.focus();
-      }
-    });
-    document.addEventListener('click', (event) => {
-      if (menu.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
-    });
-    window.matchMedia('(min-width: 1200px)').addEventListener('change', (event) => {
-      if (event.matches) menu.open = false;
+
+  function initIbeShell() {
+    /* Fallback for the footer year in case the main-site script is delayed. */
+    document.querySelectorAll('[data-cc-year]').forEach((node) => {
+      if (!node.textContent.trim()) node.textContent = String(new Date().getFullYear());
     });
   }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCoreCruisesShell, {once: true});
+    document.addEventListener('DOMContentLoaded', initIbeShell, { once: true });
   } else {
-    initCoreCruisesShell();
+    initIbeShell();
   }
 })();
