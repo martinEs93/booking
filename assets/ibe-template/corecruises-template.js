@@ -1,52 +1,47 @@
-/* Core Cruises | IBE shell | v6.0
- * Self-contained navigation behavior for suche.corecruises.de.
- * Does not touch IBE controls/forms/events.
+/* Core Cruises | IBE shell v4.0
+ * Only the added mobile navigation is addressed. The supplied logo loads directly.
+ * No IBE selectors, form events, cookies, storage or network submissions.
  */
 (() => {
   'use strict';
+  function initCoreCruisesShell() {
+    const menu = document.getElementById('cc-shell-mobile-menu');
+    if (!(menu instanceof HTMLDetailsElement)) return;
+    const summary = menu.querySelector('summary');
+    menu.addEventListener('click', (event) => {
+      if (event.target instanceof Element && event.target.closest('a')) menu.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        summary?.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (menu.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    });
+    window.matchMedia('(min-width: 1200px)').addEventListener('change', (event) => {
+      if (event.matches) menu.open = false;
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCoreCruisesShell, {once: true});
+  } else {
+    initCoreCruisesShell();
+  }
+})();
 
-  function initCoreCruisesIbeShell() {
-    const button = document.getElementById('ccHomeMenu');
-    const nav = document.getElementById('ccHomeNav');
-
-    if (button && nav) {
-      const close = () => {
-        nav.classList.remove('is-open');
-        button.setAttribute('aria-expanded', 'false');
-        button.setAttribute('aria-label', 'Menü öffnen');
-      };
-
-      button.addEventListener('click', () => {
-        const open = !nav.classList.contains('is-open');
-        nav.classList.toggle('is-open', open);
-        button.setAttribute('aria-expanded', String(open));
-        button.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
-      });
-
-      nav.addEventListener('click', (event) => {
-        if (event.target instanceof Element && event.target.closest('a')) close();
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && nav.classList.contains('is-open')) {
-          close();
-          button.focus();
-        }
-      });
-
-      window.matchMedia('(min-width: 1181px)').addEventListener('change', (event) => {
-        if (event.matches) close();
-      });
-    }
-
+/* v4.1: Footer year only; existing mobile-navigation behavior stays untouched. */
+(() => {
+  'use strict';
+  const setCoreCruisesYear = () => {
     document.querySelectorAll('[data-cc-year]').forEach((node) => {
       node.textContent = String(new Date().getFullYear());
     });
-  }
-
+  };
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCoreCruisesIbeShell, { once: true });
+    document.addEventListener('DOMContentLoaded', setCoreCruisesYear, {once: true});
   } else {
-    initCoreCruisesIbeShell();
+    setCoreCruisesYear();
   }
 })();
