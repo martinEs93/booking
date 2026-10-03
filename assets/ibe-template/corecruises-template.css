@@ -1,176 +1,502 @@
-/* Core Cruises | IBE template integration | v5.0
- * Ziel: suche.corecruises.de soll sich wie ein Teil von corecruises.de anfühlen.
- *
- * Header/Footer kommen aus dem aktuellen Core-Cruises-Hauptseiten-Stylesheet.
- * Diese Datei enthält nur sichere IBE-Integrationsregeln.
- * Keine globalen Bootstrap-Regeln. Keine Eingriffe in IBE-Formulare, Modals,
- * Kalender, Cookies, Storage oder Buchungslogik.
+/* Core Cruises | IBE shell | v6.0
+ * Self-contained Core Cruises header/footer styling for suche.corecruises.de.
+ * No dependency on the main-site stylesheet.
+ * No global Bootstrap resets. No IBE form/calendar/modal logic is touched.
  */
 
-html {
-  background: #fff;
+@font-face{
+  font-family:CCFigtree;
+  src:url(https://www.corecruises.de/assets/fonts/Figtree-638eb5d3bd63be37de3e171851715851.woff2?h=368adbabfcd96bcd2590e1609f8d6a9a) format("woff2");
+  font-weight:300 900;
+  font-style:normal;
+  font-display:swap;
 }
 
-body.cc-ibe-page {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
+:root{
+  --cc-navy:#071a2f;
+  --cc-navy-2:#0a2949;
+  --cc-gold:#d5b55f;
+  --cc-gold-soft:#f0dfae;
+  --cc-ink:#10283f;
+  --cc-muted:#687c8e;
+  --cc-line:rgba(7,26,47,.11);
+  --cc-bg:#f5f7f8;
 }
 
-/* IBE-Slot bewusst ohne position/transform/isolation/overflow,
-   damit Dropdowns, Kalender und Dialoge nicht beeinträchtigt werden. */
-#cc-ibe-inhalt {
-  flex: 1 0 auto;
-  width: 100%;
-  padding-top: 26px;
-  padding-bottom: 40px;
+html{background:#fff}
+body.cc-ibe-page{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  color:var(--cc-ink);
 }
 
-/* Gleicher ruhiger Übergang zum Footer wie auf den Hauptseiten. */
-.cc-ibe-support {
-  flex: 0 0 auto;
-  padding: 8px 24px 54px;
-  background: #fff;
-  font-family: Figtree, "Segoe UI", system-ui, -apple-system, sans-serif;
+body.cc-ibe-page,
+body.cc-ibe-page .cc-home-header,
+body.cc-ibe-page .cc-home-footer,
+body.cc-ibe-page .cc-ibe-support{
+  font-family:CCFigtree,Figtree,"Segoe UI",system-ui,-apple-system,sans-serif;
 }
 
-.cc-ibe-support *,
-.cc-ibe-support *::before,
-.cc-ibe-support *::after {
-  box-sizing: border-box;
+body.cc-ibe-page *,
+body.cc-ibe-page *::before,
+body.cc-ibe-page *::after{
+  box-sizing:border-box;
 }
 
-.cc-ibe-support__inner {
-  width: min(1280px, 100%);
-  margin: 0 auto;
-  padding: 31px 34px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 34px;
-  border: 1px solid rgba(7, 26, 47, .10);
-  border-radius: 22px;
-  color: #10283f;
+/* ---------------------------------------------------------
+   Skip link
+   --------------------------------------------------------- */
+.cc-home-skip{
+  position:absolute;
+  top:8px;
+  left:12px;
+  z-index:10000;
+  width:1px;
+  height:1px;
+  padding:0;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+  color:var(--cc-navy);
+  background:var(--cc-gold);
+  font-weight:800;
+  text-decoration:none;
+}
+.cc-home-skip:focus{
+  width:auto;
+  height:auto;
+  padding:11px 16px;
+  clip-path:none;
+  border-radius:9px;
+  outline:3px solid #fff;
+  outline-offset:2px;
+}
+
+/* ---------------------------------------------------------
+   Header – same visual language as corecruises.de
+   --------------------------------------------------------- */
+.cc-home-header{
+  position:relative;
+  z-index:40;
+  width:100%;
+  color:#fff;
+  background:var(--cc-navy);
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+.cc-home-header__inner{
+  width:min(1280px,calc(100% - 40px));
+  min-height:82px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+.cc-home-brand{
+  display:inline-flex;
+  align-items:center;
+  flex:0 0 auto;
+  width:218px;
+  text-decoration:none;
+}
+.cc-home-brand img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  object-fit:contain;
+}
+
+.cc-home-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  margin-left:auto;
+}
+.cc-home-nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:42px;
+  padding:8px 10px;
+  border-radius:9px;
+  color:rgba(255,255,255,.82);
+  font-size:.82rem;
+  font-weight:650;
+  line-height:1.2;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .18s ease,color .18s ease;
+}
+.cc-home-nav a:hover{
+  color:#fff;
+  background:rgba(255,255,255,.09);
+}
+.cc-home-nav a[aria-current="page"]{
+  color:var(--cc-gold-soft);
+  background:rgba(213,181,95,.12);
+}
+.cc-home-account-link{
+  margin-left:5px;
+  border:1px solid rgba(213,181,95,.40);
+  color:var(--cc-gold-soft)!important;
+}
+
+.cc-home-social{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex:0 0 auto;
+}
+.cc-home-social a,
+.cc-home-footer__social a{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(255,255,255,.05);
+  text-decoration:none;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.cc-home-social a:hover,
+.cc-home-footer__social a:hover{
+  color:var(--cc-navy);
+  background:var(--cc-gold);
+  border-color:var(--cc-gold);
+}
+.cc-home-social svg,
+.cc-home-footer__social svg{
+  display:block;
+  width:16px;
+  height:16px;
+  fill:currentColor;
+}
+
+.cc-home-menu{
+  display:none;
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:10px;
+  color:#fff;
+  background:transparent;
+  cursor:pointer;
+}
+.cc-home-menu svg{
+  display:block;
+  width:22px;
+  height:22px;
+  margin:auto;
+}
+
+/* ---------------------------------------------------------
+   IBE content slot – deliberately minimal
+   --------------------------------------------------------- */
+#cc-ibe-inhalt{
+  flex:1 0 auto;
+  width:100%;
+  padding-top:22px;
+  padding-bottom:34px;
+}
+#cc-ibe-inhalt:focus{outline:none}
+
+/* ---------------------------------------------------------
+   Advisory strip
+   --------------------------------------------------------- */
+.cc-ibe-support{
+  flex:0 0 auto;
+  padding:8px 24px 54px;
+  background:#fff;
+}
+.cc-ibe-support__inner{
+  width:min(1280px,100%);
+  margin:0 auto;
+  padding:31px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:34px;
+  border:1px solid var(--cc-line);
+  border-radius:22px;
   background:
-    radial-gradient(circle at 96% 0%, rgba(213, 181, 95, .13), transparent 27%),
-    #f7f8f9;
+    radial-gradient(circle at 96% 0%,rgba(213,181,95,.13),transparent 27%),
+    var(--cc-bg);
+}
+.cc-ibe-support__kicker{
+  display:block;
+  margin:0 0 7px;
+  color:#0e5f95;
+  font-size:.72rem;
+  font-weight:850;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.cc-ibe-support h2{
+  margin:0;
+  color:var(--cc-navy);
+  font-size:clamp(1.7rem,2.7vw,2.6rem);
+  line-height:1.05;
+  letter-spacing:-.035em;
+}
+.cc-ibe-support p{
+  max-width:760px;
+  margin:11px 0 0;
+  color:var(--cc-muted);
+  font-size:.95rem;
+  line-height:1.62;
+}
+.cc-ibe-support__actions{
+  display:flex;
+  flex:0 0 auto;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:10px;
 }
 
-.cc-ibe-support__kicker {
-  display: block;
-  margin: 0 0 7px;
-  color: #0e5f95;
-  font-size: .72rem;
-  font-weight: 850;
-  letter-spacing: .11em;
-  text-transform: uppercase;
+.cc-home-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:11px 17px;
+  border:1px solid transparent;
+  border-radius:10px;
+  font:inherit;
+  font-size:.86rem;
+  font-weight:800;
+  text-decoration:none;
+}
+.cc-home-btn--gold{
+  color:var(--cc-navy);
+  background:var(--cc-gold);
+  border-color:var(--cc-gold);
+}
+.cc-home-btn--gold:hover{background:#e1c36f;border-color:#e1c36f}
+.cc-home-btn--light{
+  color:var(--cc-navy);
+  background:#fff;
+  border-color:#cfd9e1;
+}
+.cc-home-btn--light:hover{background:#edf3f7}
+
+/* ---------------------------------------------------------
+   Footer – current Core Cruises structure
+   --------------------------------------------------------- */
+.cc-home-footer{
+  flex:0 0 auto;
+  width:100%;
+  padding:52px 24px 24px;
+  color:#fff;
+  background:var(--cc-navy);
+}
+.cc-home-footer__inner{
+  width:min(1280px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(300px,1.55fr) minmax(180px,.6fr) minmax(180px,.6fr);
+  gap:60px;
+  align-items:start;
+}
+.cc-home-footer__brand>a{
+  display:inline-flex;
+  width:220px;
+}
+.cc-home-footer__brand img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.cc-home-footer__brand p{
+  max-width:520px;
+  margin:18px 0 0;
+  color:rgba(255,255,255,.64);
+  font-size:.9rem;
+  line-height:1.65;
+}
+.cc-home-footer__social{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:20px;
+}
+.cc-home-footer h3{
+  margin:5px 0 15px;
+  color:#fff;
+  font-size:.77rem;
+  font-weight:850;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.cc-home-footer nav{
+  display:grid;
+  gap:10px;
+}
+.cc-home-footer nav a{
+  color:rgba(255,255,255,.70);
+  font-size:.88rem;
+  line-height:1.4;
+  text-decoration:none;
+}
+.cc-home-footer nav a:hover{color:var(--cc-gold-soft)}
+
+.cc-home-footer__bottom{
+  width:min(1280px,100%);
+  margin:42px auto 0;
+  padding-top:21px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border-top:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.52);
+  font-size:.76rem;
+}
+.cc-home-footer__legal{
+  display:flex!important;
+  grid-template-columns:none!important;
+  flex-direction:row;
+  flex-wrap:wrap;
+  gap:18px!important;
+}
+.cc-home-footer__legal a{
+  color:rgba(255,255,255,.58)!important;
+  font-size:.76rem!important;
 }
 
-.cc-ibe-support h2 {
-  margin: 0;
-  color: #071a2f;
-  font-size: clamp(1.7rem, 2.7vw, 2.6rem);
-  line-height: 1.05;
-  letter-spacing: -.035em;
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media(max-width:1180px){
+  .cc-home-header__inner{
+    width:min(100% - 32px,1280px);
+    flex-wrap:wrap;
+    padding:14px 0;
+  }
+  .cc-home-brand{width:205px}
+  .cc-home-menu{
+    display:block;
+    margin-left:auto;
+  }
+  .cc-home-social{
+    order:2;
+    width:100%;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,.10);
+  }
+  .cc-home-nav{
+    display:none;
+    order:3;
+    width:100%;
+    margin-left:0;
+    padding-top:6px;
+    border-top:1px solid rgba(255,255,255,.10);
+  }
+  .cc-home-nav.is-open{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:3px;
+  }
+  .cc-home-nav a{
+    padding:11px 12px;
+    white-space:normal;
+  }
 }
 
-.cc-ibe-support p {
-  max-width: 760px;
-  margin: 11px 0 0;
-  color: #667a8c;
-  font-size: .95rem;
-  line-height: 1.62;
+@media(max-width:900px){
+  .cc-ibe-support{
+    padding:6px 18px 42px;
+  }
+  .cc-ibe-support__inner{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:22px;
+    padding:27px 25px;
+  }
+  .cc-ibe-support__actions{justify-content:flex-start}
+  .cc-home-footer__inner{
+    grid-template-columns:1fr 1fr;
+    gap:38px;
+  }
+  .cc-home-footer__brand{
+    grid-column:1/-1;
+  }
 }
 
-.cc-ibe-support__actions {
-  display: flex;
-  flex: 0 0 auto;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-/* Auf der Suche-Seite soll der Footer direkt wie auf corecruises.de abschließen. */
-body.cc-ibe-page > .cc-home-footer {
-  margin-top: 0;
-}
-
-/* Verhindert, dass IBE-/Bootstrap-Regeln Bilder im Header/Footer verformen. */
-body.cc-ibe-page .cc-home-header img,
-body.cc-ibe-page .cc-home-footer img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Hauptseiten-Header soll auch auf dem Subdomain-Template immer vor normalen
-   IBE-Inhalten liegen, ohne die IBE selbst in einen neuen Stacking Context zu setzen. */
-body.cc-ibe-page > .cc-home-header {
-  position: relative;
-  z-index: 30;
-}
-
-/* Fokus-Sprungziel nicht unter den Header setzen. */
-#cc-ibe-inhalt:focus {
-  outline: none;
-}
-
-@media (max-width: 900px) {
-  #cc-ibe-inhalt {
-    padding-top: 18px;
-    padding-bottom: 30px;
+@media(max-width:575.98px){
+  .cc-home-header__inner{
+    width:calc(100% - 28px);
+    min-height:68px;
+    gap:10px;
+    padding:11px 0;
+  }
+  .cc-home-brand{
+    width:min(195px,calc(100vw - 92px));
+  }
+  .cc-home-menu{
+    width:42px;
+    height:42px;
+  }
+  .cc-home-social{
+    gap:6px;
+    padding-top:10px;
+  }
+  .cc-home-social a{
+    width:32px;
+    height:32px;
+  }
+  .cc-home-nav.is-open{
+    grid-template-columns:1fr;
   }
 
-  .cc-ibe-support {
-    padding: 6px 18px 42px;
+  #cc-ibe-inhalt{
+    padding-top:12px;
+    padding-bottom:24px;
   }
 
-  .cc-ibe-support__inner {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 22px;
-    padding: 27px 25px;
+  .cc-ibe-support{
+    padding:4px 12px 30px;
   }
-
-  .cc-ibe-support__actions {
-    justify-content: flex-start;
+  .cc-ibe-support__inner{
+    padding:23px 19px;
+    border-radius:18px;
   }
-}
-
-@media (max-width: 575.98px) {
-  #cc-ibe-inhalt {
-    padding-top: 12px;
-    padding-bottom: 24px;
+  .cc-ibe-support__actions{
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
   }
+  .cc-ibe-support__actions .cc-home-btn{width:100%}
 
-  .cc-ibe-support {
-    padding: 4px 12px 30px;
+  .cc-home-footer{
+    padding:40px 20px 22px;
   }
-
-  .cc-ibe-support__inner {
-    padding: 23px 19px;
-    border-radius: 18px;
+  .cc-home-footer__inner{
+    grid-template-columns:1fr;
+    gap:30px;
   }
-
-  .cc-ibe-support__actions {
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .cc-ibe-support__actions .cc-home-btn {
-    width: 100%;
-    justify-content: center;
+  .cc-home-footer__brand{grid-column:auto}
+  .cc-home-footer__bottom{
+    margin-top:32px;
+    align-items:flex-start;
+    flex-direction:column;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cc-ibe-support *,
-  .cc-ibe-support *::before,
-  .cc-ibe-support *::after {
-    transition: none !important;
-    animation: none !important;
+@media(prefers-reduced-motion:reduce){
+  .cc-home-header *,
+  .cc-home-footer *,
+  .cc-ibe-support *{
+    transition:none!important;
+    animation:none!important;
   }
 }

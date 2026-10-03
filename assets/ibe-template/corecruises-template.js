@@ -1,23 +1,52 @@
-/* Core Cruises | IBE template integration | v5.0
- * Header/mobile navigation is handled by the same corecruises-home.js
- * used on www.corecruises.de.
- *
- * This file intentionally does not touch IBE selectors, forms, dates,
- * booking events, cookies, localStorage, sessionStorage or network requests.
+/* Core Cruises | IBE shell | v6.0
+ * Self-contained navigation behavior for suche.corecruises.de.
+ * Does not touch IBE controls/forms/events.
  */
 (() => {
   'use strict';
 
-  function initIbeShell() {
-    /* Fallback for the footer year in case the main-site script is delayed. */
+  function initCoreCruisesIbeShell() {
+    const button = document.getElementById('ccHomeMenu');
+    const nav = document.getElementById('ccHomeNav');
+
+    if (button && nav) {
+      const close = () => {
+        nav.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Menü öffnen');
+      };
+
+      button.addEventListener('click', () => {
+        const open = !nav.classList.contains('is-open');
+        nav.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', String(open));
+        button.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+      });
+
+      nav.addEventListener('click', (event) => {
+        if (event.target instanceof Element && event.target.closest('a')) close();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+          close();
+          button.focus();
+        }
+      });
+
+      window.matchMedia('(min-width: 1181px)').addEventListener('change', (event) => {
+        if (event.matches) close();
+      });
+    }
+
     document.querySelectorAll('[data-cc-year]').forEach((node) => {
-      if (!node.textContent.trim()) node.textContent = String(new Date().getFullYear());
+      node.textContent = String(new Date().getFullYear());
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initIbeShell, { once: true });
+    document.addEventListener('DOMContentLoaded', initCoreCruisesIbeShell, { once: true });
   } else {
-    initIbeShell();
+    initCoreCruisesIbeShell();
   }
 })();
