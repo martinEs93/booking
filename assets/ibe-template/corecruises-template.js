@@ -31,17 +31,15 @@
   }
 })();
 
-/* v4.1: Footer year only; existing mobile-navigation behavior stays untouched. */
+/* v4.2 – footer year only */
 (() => {
   'use strict';
-  const setCoreCruisesYear = () => {
-    document.querySelectorAll('[data-cc-year]').forEach((node) => {
-      node.textContent = String(new Date().getFullYear());
-    });
-  };
+  const updateYear = () => document.querySelectorAll('[data-cc-year]').forEach(
+    node => node.textContent = String(new Date().getFullYear())
+  );
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setCoreCruisesYear, {once: true});
+    document.addEventListener('DOMContentLoaded', updateYear, {once:true});
   } else {
-    setCoreCruisesYear();
+    updateYear();
   }
 })();

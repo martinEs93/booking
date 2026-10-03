@@ -208,216 +208,220 @@ body.cc-shell-page { margin: 0; min-height: 100vh; display: flex; flex-direction
 }
 
 /* ============================================================
-   Core Cruises IBE Shell 4.1 – Header/Footer alignment patch
-   Ergänzt die originale v4.0-Datei; bestehende IBE-Regeln bleiben erhalten.
+   Core Cruises IBE Shell 4.2 – visible main-site alignment
+   This patch is appended to the supplied v4.0 CSS.
    ============================================================ */
 
-/* Match current Core Cruises content rail */
-.cc-shell-header__inner {
-  max-width: 1280px;
-  min-height: 70px;
-  flex-wrap: nowrap;
-  gap: 22px;
+/* Header now visibly more compact and closer to the main site */
+.cc-shell-header{
+  padding:0 24px;
+  box-shadow:none;
 }
-
-/* Current main-site logo asset is not the old 911x155 wordmark. */
-.cc-shell-brand__wordmark {
-  width: 218px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
+.cc-shell-header__inner{
+  max-width:1280px;
+  min-height:82px;
+  margin:0 auto;
+  flex-wrap:nowrap;
+  gap:20px;
 }
-
-.cc-shell-nav {
-  margin-left: auto;
-  gap: 2px;
+.cc-shell-brand{
+  width:205px;
 }
-
+.cc-shell-brand__wordmark{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.cc-shell-nav{
+  margin-left:auto;
+  gap:1px;
+}
 .cc-shell-nav a,
-.cc-shell-mobile__nav a {
-  padding: 9px 10px;
-  border-radius: 9px;
-  font-size: 13px;
-  font-weight: 650;
+.cc-shell-mobile__nav a{
+  padding:9px 9px;
+  border-radius:9px;
+  font-size:12.5px;
+  font-weight:650;
+}
+.cc-shell-nav a[aria-current],
+.cc-shell-mobile__nav a[aria-current]{
+  color:#F0DFAE;
+  background:rgba(212,175,55,.12);
+}
+.cc-shell-account-link{
+  margin-left:4px;
+  border:1px solid rgba(212,175,55,.42);
+  color:#F0DFAE!important;
+}
+.cc-shell-social--header{
+  margin-left:5px;
+}
+.cc-shell-social a{
+  flex:0 0 34px;
+  width:34px;
+  height:34px;
+  min-width:34px;
+  min-height:34px;
+  background:rgba(255,255,255,.045);
+}
+.cc-shell-social a .cc-shell-icon{
+  width:16px;
+  height:16px;
+  flex-basis:16px;
 }
 
-.cc-shell-account-link {
-  margin-left: 4px;
-  border: 1px solid rgba(212,175,55,.42);
-  color: #F0DFAE !important;
+/* Slightly quieter gap to IBE content */
+#cc-ibe-inhalt{
+  padding-top:18px;
+  padding-bottom:32px;
 }
 
-.cc-shell-social--header {
-  margin-left: 4px;
+/* Consultation card */
+.cc-shell-help{
+  padding:8px 24px 52px;
+  background:#fff;
 }
-
-.cc-shell-social a {
-  flex-basis: 34px;
-  width: 34px;
-  height: 34px;
-  min-width: 34px;
-  min-height: 34px;
-}
-
-.cc-shell-social a .cc-shell-icon {
-  width: 16px;
-  height: 16px;
-  flex-basis: 16px;
-}
-
-/* Help area closer to the current main-site card language */
-.cc-shell-help {
-  padding: 8px 24px 52px;
-  background: #fff;
-}
-
-.cc-shell-help__inner {
-  max-width: 1280px;
-  padding: 30px 34px;
-  border-radius: 22px;
+.cc-shell-help__inner{
+  max-width:1280px;
+  padding:30px 34px;
+  border-radius:22px;
+  border:1px solid rgba(10,26,47,.10);
   background:
-    radial-gradient(circle at 96% 0%, rgba(212,175,55,.13), transparent 27%),
+    radial-gradient(circle at 96% 0%,rgba(212,175,55,.13),transparent 27%),
     #F7F8F9;
+  box-shadow:none;
+}
+.cc-shell-help__title{
+  font-size:clamp(24px,2.6vw,38px);
+  line-height:1.07;
+  letter-spacing:-.035em;
+}
+.cc-shell-help__text{
+  max-width:700px;
+  line-height:1.6;
 }
 
-.cc-shell-help__title {
-  font-size: clamp(24px, 2.6vw, 38px);
-  line-height: 1.08;
-  letter-spacing: -.035em;
+/* Current site-style footer: obvious 3-column layout */
+.cc-shell-footer{
+  padding:52px 24px 24px;
+}
+.cc-shell-footer__inner.cc-shell-footer__grid{
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(300px,1.55fr) minmax(180px,.6fr) minmax(180px,.6fr);
+  align-items:start;
+  gap:60px;
+  text-align:left;
+}
+.cc-shell-footer__brand-col .cc-shell-brand{
+  width:220px;
+}
+.cc-shell-footer__brand-col p{
+  max-width:520px;
+  margin:18px 0 0;
+  color:rgba(255,255,255,.64);
+  font-size:14px;
+  line-height:1.65;
+}
+.cc-shell-footer__brand-col .cc-shell-social--footer{
+  justify-content:flex-start;
+  margin-top:20px;
+}
+.cc-shell-footer__column h3{
+  margin:5px 0 15px;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.cc-shell-footer__column nav{
+  display:grid;
+  gap:10px;
+}
+.cc-shell-footer__column nav a{
+  padding:0;
+  color:rgba(255,255,255,.70);
+  font-size:14px;
+  font-weight:500;
+}
+.cc-shell-footer__column nav a:hover{
+  color:var(--cc-shell-gold);
+}
+.cc-shell-footer__bottom{
+  max-width:1280px;
+  margin:42px auto 0;
+  padding-top:21px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border-top:1px solid rgba(255,255,255,.14);
+  color:#BCCCDD;
+  font-size:13px;
+}
+.cc-shell-footer__legal{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+}
+.cc-shell-footer__legal a{
+  color:#BCCCDD;
+  font-size:13px;
 }
 
-/* Main-site-like footer, still entirely within the original cc-shell footer */
-.cc-shell-footer {
-  padding: 52px 24px 24px;
-}
-
-.cc-shell-footer__inner--mainlike {
-  max-width: 1280px;
-  display: grid;
-  grid-template-columns: minmax(300px,1.55fr) minmax(180px,.6fr) minmax(180px,.6fr);
-  gap: 60px;
-  align-items: start;
-  text-align: left;
-}
-
-.cc-shell-footer__brandblock p {
-  max-width: 520px;
-  margin: 18px 0 0;
-  color: rgba(255,255,255,.64);
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-.cc-shell-brand--footer .cc-shell-brand__wordmark {
-  width: 220px;
-}
-
-.cc-shell-footer__brandblock .cc-shell-social--footer {
-  justify-content: flex-start;
-  margin-top: 20px;
-}
-
-.cc-shell-footer__column h3 {
-  margin: 5px 0 15px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-}
-
-.cc-shell-footer__column nav {
-  display: grid;
-  gap: 10px;
-}
-
-.cc-shell-footer__column nav a {
-  color: rgba(255,255,255,.70);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0;
-}
-
-.cc-shell-footer__column nav a:hover {
-  color: var(--cc-shell-gold);
-}
-
-.cc-shell-footer__bottom {
-  max-width: 1280px;
-  margin: 42px auto 0;
-  padding-top: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-top: 1px solid rgba(255,255,255,.14);
-  color: #BCCCDD;
-  font-size: 13px;
-}
-
-.cc-shell-footer__legal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-
-.cc-shell-footer__legal a {
-  color: #BCCCDD;
-  font-size: 13px;
-}
-
-@media (max-width: 1199.98px) {
-  .cc-shell-header__inner {
-    flex-wrap: wrap;
+/* Original responsive menu stays in charge */
+@media(max-width:1199.98px){
+  .cc-shell-header{
+    padding:13px 20px;
   }
-
-  .cc-shell-account-link {
-    margin-left: 0;
+  .cc-shell-header__inner{
+    min-height:54px;
+    flex-wrap:wrap;
   }
-}
-
-@media (max-width: 991.98px) {
-  .cc-shell-footer__inner--mainlike {
-    grid-template-columns: 1fr 1fr;
-    gap: 38px;
+  .cc-shell-brand{
+    width:205px;
   }
-
-  .cc-shell-footer__brandblock {
-    grid-column: 1 / -1;
+  .cc-shell-account-link{
+    margin-left:0;
   }
 }
 
-@media (max-width: 575.98px) {
-  .cc-shell-brand__wordmark {
-    width: min(195px, calc(100vw - 118px));
-    max-width: 100%;
+@media(max-width:991.98px){
+  .cc-shell-footer__inner.cc-shell-footer__grid{
+    grid-template-columns:1fr 1fr;
+    gap:38px;
   }
-
-  .cc-shell-header {
-    padding: 11px 14px;
+  .cc-shell-footer__brand-col{
+    grid-column:1/-1;
   }
+}
 
-  .cc-shell-help {
-    padding: 4px 12px 30px;
+@media(max-width:575.98px){
+  .cc-shell-header{
+    padding:11px 14px;
   }
-
-  .cc-shell-help__inner {
-    padding: 23px 19px;
-    border-radius: 18px;
+  .cc-shell-brand{
+    width:min(190px,calc(100vw - 110px));
   }
-
-  .cc-shell-footer__inner--mainlike {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .cc-shell-help{
+    padding:4px 12px 30px;
   }
-
-  .cc-shell-footer__brandblock {
-    grid-column: auto;
+  .cc-shell-help__inner{
+    padding:23px 19px;
   }
-
-  .cc-shell-footer__bottom {
-    margin-top: 32px;
-    align-items: flex-start;
-    flex-direction: column;
+  .cc-shell-footer__inner.cc-shell-footer__grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+  .cc-shell-footer__brand-col{
+    grid-column:auto;
+  }
+  .cc-shell-footer__bottom{
+    margin-top:32px;
+    align-items:flex-start;
+    flex-direction:column;
   }
 }
