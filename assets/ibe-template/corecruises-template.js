@@ -31,7 +31,7 @@
   }
 })();
 
-/* v4.5 - footer year + homepage offers experience */
+/* v4.6 - footer year + homepage offers experience */
 (() => {
   'use strict';
   const updateYear = () => document.querySelectorAll('[data-cc-year]').forEach(
@@ -44,7 +44,7 @@
   }
 })();
 
-/* v4.5 - CruiseCompass homepage editorial layer + offer tabs */
+/* v4.6 - CruiseCompass homepage editorial layer + offer tabs */
 (() => {
   'use strict';
 
