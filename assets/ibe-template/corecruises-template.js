@@ -31,7 +31,7 @@
   }
 })();
 
-/* v4.2 – footer year only */
+/* v4.3 - footer year only */
 (() => {
   'use strict';
   const updateYear = () => document.querySelectorAll('[data-cc-year]').forEach(
