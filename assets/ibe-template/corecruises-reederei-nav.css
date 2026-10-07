@@ -1,0 +1,166 @@
+/* Core Cruises | Reederei dropdown navigation | v1.1 | 2026-10-07 */
+.cc-lines-nav{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  min-width:0;
+}
+.cc-lines-nav__toggle{
+  display:inline-grid;
+  place-items:center;
+  width:28px;
+  height:34px;
+  margin-left:-4px;
+  padding:0;
+  border:0;
+  border-radius:8px;
+  background:transparent;
+  color:#D9E5EE;
+  cursor:pointer;
+  transition:background-color .16s ease,color .16s ease,transform .16s ease;
+}
+.cc-lines-nav__toggle:hover,
+.cc-lines-nav__toggle:focus-visible,
+.cc-lines-nav[data-open="true"] .cc-lines-nav__toggle{
+  color:#fff;
+  background:rgba(255,255,255,.10);
+}
+.cc-lines-nav__toggle:focus-visible{
+  outline:2px solid #D4AF37;
+  outline-offset:2px;
+}
+.cc-lines-nav__toggle svg{
+  width:13px;
+  height:13px;
+  display:block;
+  transition:transform .16s ease;
+}
+.cc-lines-nav[data-open="true"] .cc-lines-nav__toggle svg{transform:rotate(180deg)}
+.cc-lines-nav__menu{
+  position:absolute;
+  top:calc(100% + 12px);
+  left:0;
+  z-index:5000;
+  width:260px;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.12);
+  border-top:2px solid #D4AF37;
+  border-radius:12px;
+  background:#0A1A2F;
+  box-shadow:0 20px 45px rgba(3,13,24,.28);
+}
+.cc-lines-nav__menu[hidden]{display:none!important}
+.cc-lines-nav__label{
+  display:block;
+  padding:6px 10px 8px;
+  color:#D4AF37;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.cc-lines-nav__menu a{
+  display:block!important;
+  padding:9px 10px!important;
+  border-radius:8px!important;
+  color:#E7EFF5!important;
+  background:transparent!important;
+  font-size:13px!important;
+  font-weight:650!important;
+  line-height:1.25!important;
+  text-decoration:none!important;
+}
+.cc-lines-nav__menu a:hover,
+.cc-lines-nav__menu a:focus-visible{
+  color:#fff!important;
+  background:rgba(255,255,255,.09)!important;
+}
+.cc-lines-nav__menu a[aria-current="page"]{
+  color:#F1D471!important;
+  background:rgba(212,175,55,.10)!important;
+}
+.cc-lines-nav__menu::before{
+  content:"";
+  position:absolute;
+  top:-7px;
+  left:35px;
+  width:12px;
+  height:12px;
+  border-top:1px solid rgba(255,255,255,.12);
+  border-left:1px solid rgba(255,255,255,.12);
+  background:#0A1A2F;
+  transform:rotate(45deg);
+}
+
+/* Mobile: overview remains a normal link, chevron expands the direct links. */
+.cc-lines-mobile{display:grid;gap:2px}
+.cc-lines-mobile__row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 44px;
+  align-items:center;
+}
+.cc-shell-mobile__nav .cc-lines-mobile__row>a{
+  min-width:0;
+}
+.cc-lines-mobile__toggle{
+  display:grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  justify-self:end;
+  margin-right:2px;
+  padding:0;
+  border:0;
+  border-radius:8px;
+  background:rgba(255,255,255,.06);
+  color:#E7EFF5;
+  cursor:pointer;
+}
+.cc-lines-mobile__toggle:focus-visible{
+  outline:2px solid #D4AF37;
+  outline-offset:2px;
+}
+.cc-lines-mobile__toggle svg{
+  width:14px;
+  height:14px;
+  transition:transform .16s ease;
+}
+.cc-lines-mobile[data-open="true"] .cc-lines-mobile__toggle svg{transform:rotate(180deg)}
+.cc-lines-mobile__submenu{
+  display:grid;
+  gap:2px;
+  margin:2px 8px 8px 12px;
+  padding:5px 0 5px 11px;
+  border-left:2px solid rgba(212,175,55,.72);
+}
+.cc-lines-mobile__submenu[hidden]{display:none!important}
+.cc-shell-mobile__nav .cc-lines-mobile__submenu a{
+  padding:9px 10px!important;
+  color:#C9D8E3!important;
+  font-size:14px!important;
+  font-weight:600!important;
+  background:transparent!important;
+}
+.cc-shell-mobile__nav .cc-lines-mobile__submenu a:hover,
+.cc-shell-mobile__nav .cc-lines-mobile__submenu a:focus-visible{
+  color:#fff!important;
+  background:rgba(255,255,255,.08)!important;
+}
+.cc-shell-mobile__nav .cc-lines-mobile__submenu a[aria-current="page"]{
+  color:#F1D471!important;
+}
+
+@media (max-width:1199.98px){
+  .cc-lines-nav{display:none!important}
+}
+@media (min-width:1200px){
+  .cc-lines-mobile{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+  .cc-lines-nav__toggle,
+  .cc-lines-nav__toggle svg,
+  .cc-lines-mobile__toggle svg{transition:none!important}
+}
+
+
+/* CruiseCompass: same dropdown presentation; no legacy public subnav rule needed. */

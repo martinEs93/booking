@@ -1,0 +1,115 @@
+/* Core Cruises | Customer shell parity | 2026-10-07
+ * Canonical geometry follows suche.corecruises.de / CruiseCompass shell.
+ * Loaded last to neutralize older page-specific header refinements only.
+ */
+.cc-shell-header{
+  position:static!important;
+  z-index:auto!important;
+  padding:15px 24px!important;
+}
+.cc-shell-header__inner{
+  max-width:1500px!important;
+  margin:0 auto!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:16px!important;
+}
+.cc-shell-header .cc-shell-brand__wordmark{
+  width:294px!important;
+  height:auto!important;
+  max-width:100%!important;
+}
+.cc-shell-header .cc-shell-nav{
+  display:flex!important;
+  align-items:center!important;
+  gap:3px!important;
+  margin-left:0!important;
+}
+.cc-shell-header .cc-shell-nav a{
+  padding:10px 12px!important;
+  font-size:14px!important;
+  white-space:normal!important;
+}
+.cc-shell-header .cc-shell-social--header{
+  display:flex!important;
+  flex:0 0 auto!important;
+  flex-wrap:nowrap!important;
+  justify-content:center!important;
+  gap:10px!important;
+  margin-left:0!important;
+  padding:0!important;
+  border:0!important;
+  order:0!important;
+}
+.cc-shell-header .cc-shell-social--header a{
+  flex:0 0 44px!important;
+  width:44px!important;
+  height:44px!important;
+  min-width:44px!important;
+  min-height:44px!important;
+}
+.cc-shell-header .cc-shell-social--header a .cc-shell-icon{
+  flex:0 0 20px!important;
+  width:20px!important;
+  height:20px!important;
+}
+.cc-shell-header .cc-shell-mobile{display:none!important}
+
+@media(max-width:1199.98px){
+  .cc-shell-header__inner{
+    position:relative!important;
+    min-height:50px!important;
+  }
+  .cc-shell-header .cc-shell-nav{display:none!important}
+  .cc-shell-header__inner>.cc-shell-brand{order:0!important}
+  .cc-shell-header .cc-shell-social--header{
+    display:flex!important;
+    flex:1 0 100%!important;
+    order:2!important;
+    justify-content:flex-start!important;
+    gap:10px!important;
+    margin-left:0!important;
+    padding:10px 0 0!important;
+    border:0!important;
+    border-top:1px solid rgba(255,255,255,.12)!important;
+  }
+  .cc-shell-header .cc-shell-mobile{
+    display:block!important;
+    margin-left:auto!important;
+    order:1!important;
+  }
+  .cc-shell-header .cc-shell-mobile>summary{
+    min-height:44px!important;
+    padding:9px 13px!important;
+  }
+  .cc-shell-header .cc-shell-mobile__nav{
+    padding-top:12px!important;
+  }
+  .cc-shell-header .cc-shell-mobile__nav a{
+    padding:12px!important;
+    font-size:15px!important;
+  }
+}
+
+@media(max-width:575.98px){
+  .cc-shell-header{padding:13px 16px!important}
+  .cc-shell-header__inner{gap:12px!important}
+  .cc-shell-header .cc-shell-social--header{
+    display:flex!important;
+    justify-content:flex-start!important;
+    gap:10px!important;
+  }
+  .cc-shell-header .cc-shell-brand__wordmark{
+    width:225px!important;
+    max-width:calc(100vw - 125px)!important;
+  }
+  .cc-shell-header .cc-shell-mobile>summary{padding:10px!important}
+  .cc-shell-header .cc-shell-mobile__label{display:none!important}
+  .cc-shell-header .cc-shell-mobile__nav{padding-top:12px!important}
+  .cc-shell-header .cc-shell-mobile__nav a{
+    padding:12px!important;
+    font-size:15px!important;
+  }
+}
