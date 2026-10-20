@@ -1,4 +1,4 @@
-/* Core Cruises | Reederei dropdown navigation | v1.1 | 2026-10-07 */
+/* Core Cruises | Reederei dropdown and editorial navigation | v1.2 | 2026-10-20 */
 (function(){
   'use strict';
 
@@ -32,6 +32,24 @@
       var active=currentFor(item[1]) ? ' aria-current="page"' : '';
       return '<a href="'+item[1]+'"'+active+'>'+item[0]+'</a>';
     }).join('');
+  }
+
+  function enhanceEditorial(nav){
+    if(!nav) return;
+    var anchor=nav.querySelector('a[data-cc-nav="inquiry"]');
+    if(!anchor) return;
+    [
+      ['news','News','https://corecruises.de/news/'],
+      ['blog','Blog','https://corecruises.de/blog/']
+    ].forEach(function(item){
+      if(nav.querySelector('a[data-cc-nav="'+item[0]+'"]')) return;
+      var link=document.createElement('a');
+      link.dataset.ccNav=item[0];
+      link.href=item[2];
+      link.textContent=item[1];
+      anchor.parentNode.insertBefore(link,anchor.nextSibling);
+      anchor=link;
+    });
   }
 
   function enhanceDesktop(){
@@ -127,6 +145,8 @@
   }
 
   function init(){
+    enhanceEditorial(document.querySelector('.cc-shell-nav'));
+    enhanceEditorial(document.querySelector('.cc-shell-mobile__nav'));
     enhanceDesktop();
     enhanceMobile();
   }
