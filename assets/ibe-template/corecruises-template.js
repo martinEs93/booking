@@ -330,7 +330,7 @@
     if (document.documentElement.classList.contains('cc-ibe-embed')) return;
     if (document.querySelector('script[data-cc-whatsapp-conversion]')) return;
     const script = document.createElement('script');
-    script.src = 'https://corecruises.de/assets/js/cc-whatsapp-conversion.js?v=20261107-11';
+    script.src = 'https://corecruises.de/assets/js/cc-whatsapp-conversion.js?v=20261107-12';
     script.dataset.ccWhatsappConversion = '1';
     document.head.appendChild(script);
   };
