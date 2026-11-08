@@ -322,15 +322,14 @@
   }
 })();
 
-/* Reuse the existing floating WhatsApp button in the Cruise Compass template. */
+/* Load the shared booking actions in direct and embedded Cruise Compass searches. */
 (() => {
   'use strict';
   if (location.hostname !== 'suche.corecruises.de') return;
   const load = () => {
-    if (document.documentElement.classList.contains('cc-ibe-embed')) return;
     if (document.querySelector('script[data-cc-whatsapp-conversion]')) return;
     const script = document.createElement('script');
-    script.src = 'https://corecruises.de/assets/js/cc-whatsapp-conversion.js?v=20261107-12';
+    script.src = 'https://corecruises.de/assets/js/cc-whatsapp-conversion.js?v=20261108-4';
     script.dataset.ccWhatsappConversion = '1';
     document.head.appendChild(script);
   };
