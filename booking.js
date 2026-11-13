@@ -106,7 +106,7 @@ function removeLastCabin() {
   if (count <= 1) return;
   const card = cabinCard(count);
   if (card?.querySelector('.person-card')) {
-    showMessage(`Kabine ${count} enthält noch Reisende. Bitte verschiebe bzw. entferne diese Personen zuerst.`);
+    showMessage(`Kabine ${count} enthält noch Reisende. Bitte verschieben oder entfernen Sie diese Personen zuerst.`);
     card.classList.add('shake'); setTimeout(()=>card.classList.remove('shake'),600); return;
   }
   card?.remove(); refreshCabinMeta(); showMessage('');
@@ -235,7 +235,7 @@ function hydrate(data) {
   }
   form.elements.lead_email.value = lead.lead_email || '';
   const trip = [data.cruise_line,data.ship,data.route].filter(Boolean).join(' · ');
-  intro.textContent = trip ? `Vorgang ${data.reference} · ${trip}` : `Vorgang ${data.reference} · Bitte ergänze eure Reisegruppe und Kabinenaufteilung.`;
+  intro.textContent = trip ? `Vorgang ${data.reference} · ${trip}` : `Vorgang ${data.reference} · Bitte ergänzen Sie Ihre Reisegruppe und Kabinenaufteilung.`;
   refreshCabinMeta();
   form.hidden = false;
   setStep(1);
