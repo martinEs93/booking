@@ -1,6 +1,6 @@
 /* Core Cruises | IBE shell v4.0
- * Only the added mobile navigation is addressed. The supplied logo loads directly.
- * No IBE selectors, form events, cookies, storage or network submissions.
+ * Own navigation, editorial content and customer-facing action labels.
+ * Provider links, prices, form events and booking submissions are not changed.
  */
 (() => {
   'use strict';
@@ -335,4 +335,90 @@
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true});
   else load();
+})();
+
+/* Inquiry copy for the existing conversion blocks, including async results.
+ * Kept here because cc-booking-conversion.js is hosted outside this repository.
+ * No links, query parameters, provider event handlers or prices are rewritten.
+ */
+(() => {
+  'use strict';
+  if (location.hostname !== 'suche.corecruises.de' ||
+      !/^\/(search|offer)\/?$/.test(location.pathname)) return;
+
+  const init = () => {
+    const root = document.getElementById('cc-ibe-inhalt');
+    if (!root || root.dataset.ccInquiryCopy === '1') return;
+    root.dataset.ccInquiryCopy = '1';
+
+    const isInquiry = (link) => {
+      try {
+        const url = new URL(link.getAttribute('href'), location.href);
+        return url.protocol === 'https:' &&
+          ['corecruises.de', 'www.corecruises.de'].includes(url.hostname) &&
+          /^\/anfrage\/?$/.test(url.pathname) &&
+          url.searchParams.get('mode') === 'booking_start';
+      } catch (_) {
+        return false;
+      }
+    };
+
+    const setCopy = (node, text) => {
+      if (node && node.textContent !== text) node.textContent = text;
+    };
+
+    const refresh = () => {
+      // Observe external updates, not our own text replacements.
+      observer.disconnect();
+      root.querySelectorAll('.ccbc').forEach((block) => {
+        const link = block.querySelector('a.ccbc-book[href]');
+        if (!link || !isInquiry(link)) return;
+        setCopy(link, 'Unverbindlich anfragen');
+        if (link.hasAttribute('aria-label')) link.setAttribute('aria-label', 'Unverbindlich anfragen');
+        if (link.hasAttribute('title')) link.setAttribute('title', 'Unverbindlich anfragen');
+        setCopy(block.querySelector('.ccbc-heading'), 'Passt diese Reise zu dir? Wir beraten dich persönlich.');
+        let copy = block.querySelector('.ccbc-copy');
+        if (!copy) {
+          copy = document.createElement('p');
+          copy.className = 'ccbc-copy';
+          const actions = block.querySelector('.ccbc-actions');
+          if (actions) actions.before(copy);
+          else block.append(copy);
+        }
+        setCopy(copy, 'Wir prüfen Preis, Verfügbarkeit und passende Kabinen für dich. Deine Anfrage ist noch keine Buchung.');
+      });
+
+      root.querySelectorAll('a.xtc-search-offer-button[href]').forEach((link) => {
+        let url;
+        try { url = new URL(link.getAttribute('href'), location.href); }
+        catch (_) { return; }
+        if (url.origin !== location.origin || url.pathname !== '/offer') return;
+        // Replace only the known label; preserve icons and provider listeners.
+        Array.from(link.childNodes).forEach((node) => {
+          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() === 'Angebot prüfen') {
+            node.textContent = 'Reise & Kabinen ansehen ';
+          }
+        });
+        if (link.getAttribute('aria-label') === 'Angebot prüfen') {
+          link.setAttribute('aria-label', 'Reise & Kabinen ansehen');
+        }
+        if (link.getAttribute('title') === 'Angebot prüfen') {
+          link.setAttribute('title', 'Reise & Kabinen ansehen');
+        }
+      });
+      observer.observe(root, {childList: true, subtree: true, characterData: true,
+        attributes: true, attributeFilter: ['href']});
+    };
+
+    let pending = false;
+    const observer = new MutationObserver(() => {
+      if (pending) return;
+      pending = true;
+      window.setTimeout(() => { pending = false; refresh(); }, 0);
+    });
+    refresh();
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once: true});
+  else init();
 })();

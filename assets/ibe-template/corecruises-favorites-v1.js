@@ -15,17 +15,6 @@
   section.dataset.ccFavoriteCta = '1';
   section.setAttribute('aria-label', 'Reise in Mein Core Cruises merken');
 
-  const copy = document.createElement('div');
-  copy.className = 'cc-favorite-cta__copy';
-  const kicker = document.createElement('span');
-  kicker.className = 'cc-favorite-cta__kicker';
-  kicker.textContent = 'Für später merken';
-  const title = document.createElement('strong');
-  title.textContent = 'Diese Reise in Mein Core Cruises speichern';
-  const text = document.createElement('span');
-  text.textContent = 'So findest du sie später in deiner persönlichen Merkliste wieder.';
-  copy.append(kicker, title, text);
-
   const target = new URL('https://mein.corecruises.de/');
   target.searchParams.set('action', 'save-favorite');
   target.searchParams.set('t', providerType);
@@ -36,6 +25,9 @@
   link.textContent = 'Reise merken';
   link.setAttribute('rel', 'noopener');
 
-  section.append(copy, link);
-  root.prepend(section);
+  section.append(link);
+  // Keep the trip and cabin prices ahead of this secondary action.
+  const prices = root.querySelector('#xt-offer-from-prices');
+  const overview = root.querySelector('#xt-overview-tab');
+  (prices || overview || root).append(section);
 })();
