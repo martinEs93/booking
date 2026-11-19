@@ -206,7 +206,7 @@ a:hover {
   }
 
   #xt-page-search > aside::-webkit-scrollbar-thumb {
-    background: rgba(0, 51, 102, .45);
+    background: rgba(7,24,43,.45);
     border-radius: 999px;
   }
 }
@@ -223,7 +223,7 @@ a:hover {
   padding: 24px !important;
   border-radius: var(--cc-radius-lg) !important;
   color: #fff !important;
-  background: radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #0A1A2F, #003366) !important;
+  background: radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #07182B, #07182B) !important;
   box-shadow: var(--cc-shadow-md);
 }
 
@@ -330,7 +330,7 @@ a:hover {
   min-height: 52px;
   border: 0 !important;
   border-radius: 0 0 14px 14px !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -400,7 +400,7 @@ a:hover {
 
 .pagination .page-item.active .page-link {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -646,7 +646,7 @@ a:hover {
   min-height: 66px;
   border: 0 !important;
   border-top: 1px solid rgba(255,255,255,.09) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
   box-shadow: 0 -8px 28px rgba(10, 26, 47, .14);
 }
@@ -689,13 +689,13 @@ a:hover {
 
 main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-button):not(.xtc-search-cruisefinder-extended-button) {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
 main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-button):not(.xtc-search-cruisefinder-extended-button):hover {
   border-color: var(--cc-petrol-dark) !important;
-  background: var(--cc-petrol-dark) !important;
+  background: #07182B !important;
 }
 
 /* ---------- Mobile ---------- */
@@ -1021,7 +1021,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 #xt-breadcrumb .btn.btn-primary {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -1098,7 +1098,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 .nav-tabs.card-header-tabs .nav-link.active {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -1230,7 +1230,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 #xt-offer-tabs .list-group-item.active {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -1257,7 +1257,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 #xt-itinerary-tab .table thead th {
   padding: .75rem .7rem;
   border-bottom: 0 !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
   font-weight: 800;
 }
@@ -1320,7 +1320,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   padding: 18px 22px !important;
   border-bottom: 0 !important;
   background:
-    radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #0A1A2F, #003366) !important;
+    radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #07182B, #07182B) !important;
   color: #fff !important;
 }
 
@@ -1364,7 +1364,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 #xt-offer-filter .list-group-item.active {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -1398,13 +1398,13 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
   min-height: 46px;
   border: 1px solid var(--cc-petrol-dark) !important;
   border-radius: 11px !important;
-  background: var(--cc-petrol-dark) !important;
+  background: #07182B !important;
   color: #fff !important;
   font-weight: 750 !important;
 }
 
 .xtc-offer-update-button:hover {
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   border-color: var(--cc-navy) !important;
 }
 
@@ -1424,7 +1424,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 #xt-offer-main [data-offerfilter-target="header"] .card-header {
   padding: .85rem 1rem !important;
   border: 0 !important;
-  background: rgba(10,26,47,.94) !important;
+  background: rgba(7,24,43,.94) !important;
   color: #fff !important;
   font-weight: 750;
 }
@@ -1691,7 +1691,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 #xt-breadcrumb .btn.btn-primary {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -1752,7 +1752,7 @@ main .btn-primary:not(.xtc-search-offer-button):not(.xtc-search-cruisefinder-but
 
 .nav-tabs.card-header-tabs .nav-link.active {
   border-bottom-color: var(--cc-gold) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   color: #fff !important;
 }
 
@@ -1877,7 +1877,7 @@ body:has(.xtc-cabins-continue-button) .card:has(.xtc-cabins-continue-button) > .
   padding: 18px 22px !important;
   border: 0 !important;
   background:
-    radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #0A1A2F, #003366) !important;
+    radial-gradient(ellipse at 95% 0%, rgba(63, 169, 174, .16), transparent 60%), linear-gradient(115deg, #07182B, #07182B) !important;
   color: #fff !important;
   font-size: 1.25rem;
   font-weight: 800 !important;
@@ -2098,7 +2098,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search)) .btn-secondary {
    klares Weiß ohne alten Bootstrap/XML-Team-Schatten */
 #xt-offer-main [data-offerfilter-target="header"],
 #xt-offer-main [data-offerfilter-target="header"] .card-header {
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   background-image: none !important;
 }
 
@@ -2268,7 +2268,7 @@ body:has(#xt-breadcrumb):not(:has(#xt-page-search))
  */
 #xt-breadcrumb .btn.btn-primary {
   border-color: var(--cc-navy) !important;
-  background: var(--cc-navy) !important;
+  background: #07182B !important;
   background-image: none !important;
   color: #FFFFFF !important;
   box-shadow: none !important;
@@ -2610,7 +2610,7 @@ body {
 
 #xt-cruisefinder-top {
   background: radial-gradient(ellipse at 95% 0%, rgba(63,169,174,.16), transparent 60%),
-              linear-gradient(115deg, #0A1A2F, #003366) !important;
+              linear-gradient(115deg, #07182B, #07182B) !important;
   box-shadow: 0 12px 32px rgba(10,26,47,.12);
 }
 #xt-cruisefinder-top .xtc-search-cruisefinder-title {
@@ -2768,7 +2768,7 @@ body {
 #xt-offer-tabs :is(h2,h3,.h3,.h4),
 #xt-dates-and-prices > .card-header h2 { font-weight: 750 !important; }
 #xt-offer-main [data-offerfilter-target="header"] .card-header {
-  background: #0A1A2F !important;
+  background: #07182B !important;
   font-weight: 700 !important;
   font-size: 16px;
 }
@@ -2787,7 +2787,7 @@ body {
   letter-spacing: normal;
 }
 #xt-breadcrumb .btn.btn-primary {
-  background: #0A1A2F !important;
+  background: #07182B !important;
   border-color: #0A1A2F !important;
   color: #FFFFFF !important;
   box-shadow: none !important;
@@ -2836,7 +2836,7 @@ body:has(#home-cruisefinder) #cc-ibe-inhalt {
   border-radius: 22px !important;
   background:
     radial-gradient(ellipse at 95% 0%, rgba(63,169,174,.16), transparent 60%),
-    linear-gradient(115deg, #0A1A2F, #003366) !important;
+    linear-gradient(115deg, #07182B, #07182B) !important;
   color: #FFFFFF !important;
   box-shadow: 0 14px 38px rgba(10,26,47,.11) !important;
 }
