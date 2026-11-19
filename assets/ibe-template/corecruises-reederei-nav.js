@@ -154,3 +154,14 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
   else init();
 })();
+
+/* Shared brand button colors, 2026-11-19. */
+(function () {
+  'use strict';
+  if (document.querySelector('link[data-cc-brand-buttons]')) return;
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://corecruises.de/assets/css/cc-brand-buttons.css?v=20261119-gold-1';
+  link.setAttribute('data-cc-brand-buttons', 'true');
+  (document.head || document.documentElement).appendChild(link);
+})();
