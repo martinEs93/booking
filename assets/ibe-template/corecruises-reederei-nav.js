@@ -161,7 +161,7 @@
   if (document.querySelector('link[data-cc-brand-buttons]')) return;
   var link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'https://corecruises.de/assets/css/cc-brand-buttons.css?v=20261119-gold-2';
+  link.href = 'https://corecruises.de/assets/css/cc-brand-buttons.css?v=20261119-gold-3';
   link.setAttribute('data-cc-brand-buttons', 'true');
   (document.head || document.documentElement).appendChild(link);
 })();
